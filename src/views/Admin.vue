@@ -1,6 +1,8 @@
 <script setup>
 import { getAuth, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
+import AdminLayout from '@/layouts/AdminLayout.vue'
+import AdminDashboard from '@/components/admin/AdminDashboard.vue'
 
 const auth = getAuth()
 const router = useRouter()
@@ -16,48 +18,36 @@ const handleLogout = async () => {
 </script>
 
 <template>
-  <div class="admin">
-    <header class="admin-header">
-      <h1>Painel Administrativo</h1>
-      <button @click="handleLogout" class="logout-button">Sair</button>
-    </header>
-    
-    <div class="admin-content">
-      <p>Bem-vindo, {{ auth.currentUser?.email }}</p>
-      <!-- Aqui você pode adicionar o conteúdo administrativo -->
-    </div>
-  </div>
+  <AdminLayout>
+    <AdminDashboard />
+  </AdminLayout>
 </template>
 
 <style scoped>
-.admin {
-  padding: 20px;
-}
-
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.logout-button {
-  padding: 8px 16px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background-color: #c82333;
-}
-
-.admin-content {
+.admin-dashboard {
   background-color: white;
-  padding: 20px;
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.dashboard-card {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.dashboard-card h3 {
+  margin: 0 0 1rem 0;
+  color: #1a1a1a;
+  font-size: 1.2rem;
 }
 </style>
