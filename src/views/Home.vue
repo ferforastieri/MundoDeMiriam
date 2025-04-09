@@ -1,24 +1,27 @@
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 </script>
 
 <template>
-  <div class="home">
-    <div class="profile-container">
+  <div class="home-container">
+    <div class="profile-section">
       <div class="profile-image">
-        <!-- Substitua o src pela URL da imagem real -->
-        <img src="" alt="Jéssica Alice" />
+        <img src="" alt="Miriam Cléres Forastieri" />
+        <div class="status-dot"></div>
       </div>
       
-      <h1>MIRIAM CLERES FORASTIERI</h1>
-      <h2>MODELO PROFISSIONAL</h2>
-      
-      <p class="description">
-        TRANSFORMO IDEIAS EM HISTÓRIAS<br>
-        VISUAIS QUE CONECTAM E INSPIRAM.
-      </p>
+      <div class="profile-info">
+        <h1>MIRIAM CLERES FORASTIERI</h1>
+        <h2>MODELO PROFISSIONAL</h2>
+        
+        <p class="description">
+          TRANSFORMO IDEIAS EM HISTÓRIAS<br>
+          VISUAIS QUE CONECTAM E INSPIRAM.
+        </p>
+      </div>
 
       <nav class="navigation">
         <button class="nav-button">AMOR EM ARTE</button>
@@ -37,108 +40,185 @@ const router = useRouter()
 </template>
 
 <style scoped>
-.home {
+.home-container {
   min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  text-align: center;
-  background-color: #f5f5f5;
+  justify-content: center;
+  padding: 40px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
 
-.profile-container {
+.profile-section {
   max-width: 600px;
   width: 100%;
+  animation: fadeIn 0.8s ease;
 }
 
 .profile-image {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   margin: 0 auto 2rem;
   border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid #40E0D0;
   position: relative;
+  border: 3px solid #1a1a1a;
+  padding: 5px;
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.02);
 }
 
 .profile-image img {
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   object-fit: cover;
 }
 
-.profile-image::after {
-  content: '';
+.status-dot {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  width: 20px;
-  height: 20px;
-  background-color: #40E0D0;
+  top: 10px;
+  right: 10px;
+  width: 12px;
+  height: 12px;
+  background-color: #1a1a1a;
   border-radius: 50%;
+  border: 2px solid white;
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: slideUp 0.5s ease;
 }
 
 h1 {
   font-size: 2.5rem;
+  color: #1a1a1a;
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
-  margin: 0.5rem 0 2rem;
+  margin: 0.5rem 0;
+  font-weight: 500;
+  letter-spacing: 3px;
 }
 
 .description {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 3rem;
-  font-weight: 500;
+  color: #1a1a1a;
+  margin: 1.5rem 0;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
 .navigation {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 12px;
   margin-bottom: 3rem;
+  animation: slideUp 0.5s ease 0.2s backwards;
 }
 
 .nav-button {
-  padding: 1rem;
-  border: none;
-  border-radius: 25px;
-  background-color: #e0e0e0;
-  color: #333;
-  font-weight: 500;
+  padding: 16px;
+  border: 2px solid #1a1a1a;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .nav-button:hover {
-  background-color: #d0d0d0;
+  background-color: #1a1a1a;
+  color: white;
+  transform: translateY(-2px);
 }
 
 .services-section {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   text-align: left;
-  padding: 2rem;
-  background-color: #e0e0e0;
-  border-radius: 15px;
+  animation: slideUp 0.5s ease 0.4s backwards;
+  transition: transform 0.3s ease;
+}
+
+.services-section:hover {
+  transform: translateY(-5px);
 }
 
 .services-section h3 {
-  color: #4a4a4a;
   font-size: 1.5rem;
+  color: #1a1a1a;
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .services-section p {
   color: #666;
-  margin: 0.5rem 0 0;
+  margin: 8px 0 0;
   font-style: italic;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .nav-button {
+    padding: 14px;
+    font-size: 13px;
+  }
 }
 </style> 

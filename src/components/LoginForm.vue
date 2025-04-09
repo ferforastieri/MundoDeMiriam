@@ -112,13 +112,28 @@ const clearFocus = () => {
 </template>
 
 <style scoped>
+/* Reset básico para garantir que não há margens indesejadas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .login-container {
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  margin: 0;
   padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
 }
 
 .login-form {
