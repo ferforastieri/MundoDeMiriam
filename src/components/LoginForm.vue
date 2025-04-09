@@ -159,19 +159,20 @@ const clearFocus = () => {
 }
 
 h2 {
-  font-size: 24px;
+  font-family: 'Gilda Display', serif;
+  text-align: center;
+  margin-bottom: 20px;
   color: #1a1a1a;
-  margin: 0;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 28px;
+  letter-spacing: 1px;
 }
 
 .subtitle {
+  font-family: 'Gilda Display', serif;
   color: #666;
   margin-top: 8px;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 16px;
+  letter-spacing: 2px;
 }
 
 .error-message {
@@ -216,6 +217,7 @@ h2 {
 }
 
 .form-group label {
+  font-family: 'Gilda Display', serif;
   position: absolute;
   left: 0;
   top: 50%;
@@ -224,6 +226,7 @@ h2 {
   font-size: 16px;
   transition: all 0.3s ease;
   pointer-events: none;
+  letter-spacing: 0.5px;
 }
 
 .input-line {
@@ -249,6 +252,7 @@ h2 {
 }
 
 button {
+  font-family: 'Gilda Display', serif;
   width: 100%;
   padding: 16px;
   margin-top: 20px;
@@ -257,8 +261,7 @@ button {
   background-color: #1a1a1a;
   color: white;
   font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;

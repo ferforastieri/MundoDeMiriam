@@ -102,28 +102,30 @@ const router = useRouter()
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-family: 'Gilda Display', serif;
+  font-size: 3rem;
   color: #1a1a1a;
   margin: 0;
-  font-weight: 600;
-  letter-spacing: 2px;
-}
-
-h2 {
-  font-size: 1rem;
-  color: #666;
-  margin: 0.5rem 0;
-  font-weight: 500;
+  font-weight: normal;
   letter-spacing: 3px;
 }
 
-.description {
+h2 {
+  font-family: 'Gilda Display', serif;
   font-size: 1.1rem;
-  line-height: 1.6;
+  color: #666;
+  margin: 1rem 0;
+  font-weight: normal;
+  letter-spacing: 4px;
+}
+
+.description {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
   color: #1a1a1a;
-  margin: 1.5rem 0;
-  font-weight: 400;
-  letter-spacing: 1px;
+  margin: 2rem 0;
+  letter-spacing: 1.5px;
 }
 
 .navigation {
@@ -135,14 +137,14 @@ h2 {
 }
 
 .nav-button {
+  font-family: 'Gilda Display', serif;
   padding: 16px;
   border: 2px solid #1a1a1a;
   border-radius: 8px;
   background-color: transparent;
   color: #1a1a1a;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 15px;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -170,16 +172,21 @@ h2 {
 }
 
 .services-section h3 {
-  font-size: 1.5rem;
+  font-family: 'Gilda Display', serif;
+  font-size: 1.8rem;
   color: #1a1a1a;
   margin: 0;
-  font-weight: 600;
+  font-weight: normal;
+  letter-spacing: 1.5px;
 }
 
 .services-section p {
+  font-family: 'Gilda Display', serif;
   color: #666;
-  margin: 8px 0 0;
+  margin: 12px 0 0;
   font-style: italic;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
 }
 
 @keyframes fadeIn {
