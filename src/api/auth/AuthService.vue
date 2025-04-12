@@ -22,7 +22,7 @@ const loginWithEmail = async (email, password) => {
     const response = await signInWithEmailAndPassword(auth, email, password)
     user.value = response.user
   } catch (e) {
-    error.value = e.message
+    error.value = e.message = "Senha ou email incorretos"
   } finally {
     loading.value = false
   }
@@ -36,7 +36,7 @@ const registerWithEmail = async (email, password) => {
     const response = await createUserWithEmailAndPassword(auth, email, password)
     user.value = response.user
   } catch (e) {
-    error.value = e.message
+    error.value = e.message = "Erro ao criar usuário"
   } finally {
     loading.value = false
   }
@@ -65,7 +65,7 @@ const logout = async () => {
     await signOut(auth)
     user.value = null
   } catch (e) {
-    error.value = e.message
+    error.value = e.message = "Erro ao fazer logout"
   } finally {
     loading.value = false
   }

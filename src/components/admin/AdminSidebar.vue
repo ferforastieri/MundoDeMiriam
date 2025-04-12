@@ -2,9 +2,15 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+const props = defineProps({
+  isCollapsed: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const router = useRouter()
 const activeRoute = ref(router.currentRoute.value.path)
-const isCollapsed = ref(false)
 const isMobile = ref(window.innerWidth < 768)
 const touchStartX = ref(0)
 const touchEndX = ref(0)
@@ -20,20 +26,10 @@ const menuItems = [
 const navigateTo = (path) => {
   router.push(path)
   activeRoute.value = path
-  if (isMobile.value) {
-    isCollapsed.value = true
-  }
-}
-
-const toggleSidebar = () => {
-  isCollapsed.value = !isCollapsed.value
 }
 
 const handleResize = () => {
   isMobile.value = window.innerWidth < 768
-  if (!isMobile.value) {
-    isCollapsed.value = false
-  }
 }
 
 const handleTouchStart = (e) => {
@@ -46,14 +42,6 @@ const handleTouchMove = (e) => {
   
   touchEndX.value = e.touches[0].clientX
   const diff = touchStartX.value - touchEndX.value
-  
-  if (diff > 50 && !isCollapsed.value) {
-    isCollapsed.value = true
-    isDragging.value = false
-  } else if (diff < -50 && isCollapsed.value) {
-    isCollapsed.value = false
-    isDragging.value = false
-  }
 }
 
 const handleTouchEnd = () => {
@@ -76,14 +64,10 @@ onUnmounted(() => {
        @touchmove="handleTouchMove"
        @touchend="handleTouchEnd">
     <div class="sidebar-overlay" 
-         v-if="!isCollapsed && isMobile"
-         @click="toggleSidebar"></div>
+         v-if="!isCollapsed && isMobile"></div>
     <nav class="admin-sidebar">
       <div class="sidebar-header">
         <h2 v-if="!isCollapsed">Menu</h2>
-        <button class="toggle-button" @click="toggleSidebar">
-          {{ isCollapsed ? '→' : '←' }}
-        </button>
       </div>
       <ul class="sidebar-menu">
         <li v-for="item in menuItems" 
