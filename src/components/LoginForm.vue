@@ -162,7 +162,7 @@ h2 {
   font-family: 'Gilda Display', serif;
   text-align: center;
   margin-bottom: 20px;
-  color: #1a1a1a;
+  color: #520;
   font-size: 28px;
   letter-spacing: 1px;
 }
@@ -243,12 +243,12 @@ h2 {
 .form-group.filled label {
   top: -10px;
   font-size: 12px;
-  color: #1a1a1a;
+  color: #520;
 }
 
 .form-group.focused .input-line {
   height: 2px;
-  background-color: #1a1a1a;
+  background-color: #520;
 }
 
 button {
@@ -258,7 +258,7 @@ button {
   margin-top: 20px;
   border: none;
   border-radius: 8px;
-  background-color: #1a1a1a;
+  background-color: #520;
   color: white;
   font-size: 16px;
   letter-spacing: 1px;
@@ -278,7 +278,7 @@ button:disabled {
 }
 
 button.loading {
-  background-color: #1a1a1a;
+  background-color: #520;
 }
 
 button.loading .button-text {

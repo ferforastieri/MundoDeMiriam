@@ -67,7 +67,7 @@ const router = useRouter()
   margin: 0 auto 2rem;
   border-radius: 50%;
   position: relative;
-  border: 3px solid #1a1a1a;
+  border: 3px solid #520;
   padding: 5px;
   background: white;
   transition: transform 0.3s ease;
@@ -90,7 +90,7 @@ const router = useRouter()
   right: 10px;
   width: 12px;
   height: 12px;
-  background-color: #1a1a1a;
+  background-color: #520;
   border-radius: 50%;
   border: 2px solid white;
 }
@@ -104,7 +104,7 @@ const router = useRouter()
 h1 {
   font-family: 'Gilda Display', serif;
   font-size: 3rem;
-  color: #1a1a1a;
+  color: #520;
   margin: 0;
   font-weight: normal;
   letter-spacing: 3px;
@@ -123,7 +123,7 @@ h2 {
   font-family: 'Gilda Display', serif;
   font-size: 1.2rem;
   line-height: 1.8;
-  color: #1a1a1a;
+  color: #520;
   margin: 2rem 0;
   letter-spacing: 1.5px;
 }
@@ -139,10 +139,10 @@ h2 {
 .nav-button {
   font-family: 'Gilda Display', serif;
   padding: 16px;
-  border: 2px solid #1a1a1a;
+  border: 2px solid #520;
   border-radius: 8px;
   background-color: transparent;
-  color: #1a1a1a;
+  color: #520;
   font-size: 15px;
   letter-spacing: 2px;
   cursor: pointer;
@@ -152,7 +152,7 @@ h2 {
 }
 
 .nav-button:hover {
-  background-color: #1a1a1a;
+  background-color: #520;
   color: white;
   transform: translateY(-2px);
 }
@@ -174,7 +174,7 @@ h2 {
 .services-section h3 {
   font-family: 'Gilda Display', serif;
   font-size: 1.8rem;
-  color: #1a1a1a;
+  color: #520;
   margin: 0;
   font-weight: normal;
   letter-spacing: 1.5px;

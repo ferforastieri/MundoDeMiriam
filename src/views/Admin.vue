@@ -47,7 +47,7 @@ const handleLogout = async () => {
 
 .dashboard-card h3 {
   margin: 0 0 1rem 0;
-  color: #1a1a1a;
+  color: #520;
   font-size: 1.2rem;
 }
 </style>

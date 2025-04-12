@@ -142,7 +142,7 @@ onUnmounted(() => {
   font-family: 'Gilda Display', serif;
   margin: 0;
   font-size: 1.1rem;
-  color: #1a1a1a;
+  color: #520;
   letter-spacing: 2px;
 }
 
@@ -151,7 +151,7 @@ onUnmounted(() => {
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #1a1a1a;
+  color: #520;
   padding: 0.5rem;
   transition: transform 0.3s ease;
 }
@@ -184,7 +184,7 @@ onUnmounted(() => {
   top: 0;
   height: 100%;
   width: 4px;
-  background-color: #1a1a1a;
+  background-color: #520;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.3s ease;
@@ -220,14 +220,14 @@ onUnmounted(() => {
 .label {
   font-family: 'Gilda Display', serif;
   font-size: 0.9rem;
-  color: #1a1a1a;
+  color: #520;
   letter-spacing: 1px;
   transition: color 0.3s ease;
   white-space: nowrap;
 }
 
 .sidebar-menu li:hover .label {
-  color: #1a1a1a;
+  color: #520;
 }
 
 .collapsed .admin-sidebar {

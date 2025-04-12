@@ -59,7 +59,7 @@ const handleLogout = async () => {
 }
 
 .admin-header {
-  background-color: #1a1a1a;
+  background-color: #520;
   color: white;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);

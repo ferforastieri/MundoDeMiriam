@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 
 const stats = ref([
-  { title: 'Total de Posts', value: '0', icon: '📝', color: '#1a1a1a' },
-  { title: 'Fotos na Galeria', value: '0', icon: '🖼️', color: '#1a1a1a' },
-  { title: 'Visualizações', value: '0', icon: '👁️', color: '#1a1a1a' },
-  { title: 'Interações', value: '0', icon: '❤️', color: '#1a1a1a' }
+  { title: 'Total de Posts', value: '0', icon: '📝', color: '#520' },
+  { title: 'Fotos na Galeria', value: '0', icon: '🖼️', color: '#520' },
+  { title: 'Visualizações', value: '0', icon: '👁️', color: '#520' },
+  { title: 'Interações', value: '0', icon: '❤️', color: '#520' }
 ])
 </script>
 
@@ -37,7 +37,7 @@ const stats = ref([
 .admin-dashboard h2 {
   font-family: 'Gilda Display', serif;
   font-size: 2rem;
-  color: #1a1a1a;
+  color: #520;
   margin: 0 0 2rem 0;
   font-weight: normal;
   letter-spacing: 2px;
@@ -95,7 +95,7 @@ const stats = ref([
 .dashboard-card h3 {
   font-family: 'Gilda Display', serif;
   margin: 0 0 0.5rem 0;
-  color: #1a1a1a;
+  color: #520;
   font-size: 1.1rem;
   letter-spacing: 1px;
 }
@@ -104,7 +104,7 @@ const stats = ref([
   font-family: 'Gilda Display', serif;
   font-size: 1.8rem;
   font-weight: normal;
-  color: #1a1a1a;
+  color: #520;
   margin: 0;
   letter-spacing: 1px;
 }
