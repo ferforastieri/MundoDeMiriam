@@ -20,7 +20,8 @@ const menuItems = [
   { path: '/admin', label: 'Dashboard', icon: '📊' },
   { path: '/admin/posts', label: 'Posts', icon: '📝' },
   { path: '/admin/gallery', label: 'Galeria', icon: '🖼️' },
-  { path: '/admin/settings', label: 'Configurações', icon: '⚙️' }
+  { path: '/admin/settings', label: 'Configurações', icon: '⚙️' },
+  { path: '/admin/instagram', label: 'Instagram', icon: '🌟' }
 ]
 
 const navigateTo = (path) => {

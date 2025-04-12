@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth } from 'firebase/auth'
 import LoginForm from '../components/LoginForm.vue'
 import Home from '../views/Home.vue'
+import InstagramStats from '../views/admin/InstagramStats.vue'
+import Admin from '../views/admin/Admin.vue'
+
 
 const routes = [
   {
@@ -20,10 +23,16 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import('../views/Admin.vue'),
+    component: Admin,
     meta: {
       requiresAuth: true // Requer autenticação
     }
+  },
+  {
+    path: '/admin/instagram',
+    name: 'InstagramStats',
+    component: InstagramStats,
+    meta: { requiresAuth: true }
   }
 ]
 
