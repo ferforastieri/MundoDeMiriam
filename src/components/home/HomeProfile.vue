@@ -1,8 +1,7 @@
 <template>
   <div class="profile-section">
     <div class="profile-image">
-      <img src="" alt="Miriam Cléres Forastieri" />
-      <div class="status-dot"></div>
+      <img src="../../assets/profile/fotodalinda.jpg" alt="Miriam Cléres Forastieri" />
     </div>
     
     <div class="profile-info">
