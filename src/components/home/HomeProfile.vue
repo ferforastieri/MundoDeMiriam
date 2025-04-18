@@ -33,7 +33,6 @@ export default {
   width: 180px;
   height: 180px;
   margin: 0 auto 2rem;
-  border-radius: 50%;
   position: relative;
   border: 3px solid #520;
   padding: 5px;
@@ -48,7 +47,6 @@ export default {
 .profile-image img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
 }
 
