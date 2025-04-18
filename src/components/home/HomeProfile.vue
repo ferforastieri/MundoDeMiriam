@@ -6,11 +6,11 @@
     
     <div class="profile-info">
       <h1>MIRIAM CLERES FORASTIERI</h1>
-      <h2>MODELO PROFISSIONAL</h2>
+      <h2>MAQUIADORA E FOTÓGRAFA</h2>
       
       <p class="description">
-        TRANSFORMO IDEIAS EM HISTÓRIAS<br>
-        VISUAIS QUE CONECTAM E INSPIRAM.
+        COMPARTILHANDO SOBRE DIVERSOS PARÂMETROS<br>
+        DA MAQUIAGEM E FOTOGRAFIA
       </p>
     </div>
   </div>
