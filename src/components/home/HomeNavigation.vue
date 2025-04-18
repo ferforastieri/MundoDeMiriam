@@ -1,9 +1,9 @@
 <template>
   <nav class="navigation">
-    <button class="nav-button">AMOR EM ARTE</button>
-    <button class="nav-button">CUPONS DE DESCONTOS</button>
-    <button class="nav-button">PORTFÓLIO MODELO</button>
-    <button class="nav-button">PORTFÓLIO UGC CREATOR</button>
+    <button class="nav-button">MAQUIAGEM ARTISTICA</button>
+    <button class="nav-button">MAQUIAGEM BEAUTY</button>
+    <button class="nav-button">FOTOGRAFIA E-COMMERCE</button>
+    <button class="nav-button">PARCERIAS</button>
     <button class="nav-button">CONTATO</button>
   </nav>
 </template>

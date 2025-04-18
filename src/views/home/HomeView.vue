@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import HomeLayout from '@/layouts/HomeLayout.vue'
 import HomeProfile from '@/components/home/HomeProfile.vue'
 import HomeNavigation from '@/components/home/HomeNavigation.vue'
+import ServicesSection from '@/components/home/ServicesSection.vue'
 
 const router = useRouter()
 </script>
@@ -13,11 +13,7 @@ const router = useRouter()
     <div class="profile-section">
       <HomeProfile />
       <HomeNavigation />
-      
-      <div class="services-section">
-        <h3>Cursos e serviços</h3>
-        <p>Aumente o impacto da sua profissão!</p>
-      </div>
+      <ServicesSection />
     </div>
   </HomeLayout>
 </template>
