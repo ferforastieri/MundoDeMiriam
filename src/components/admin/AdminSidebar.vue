@@ -6,18 +6,20 @@ const props = defineProps({
   isCollapsed: {
     type: Boolean,
     default: false
+  },
+  isMobile: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emit = defineEmits(['toggle-collapse'])
+const emit = defineEmits(['toggle'])
 
 const router = useRouter()
 const activeRoute = ref(router.currentRoute.value.path)
-const isMobile = ref(window.innerWidth < 768)
 const touchStartX = ref(0)
 const touchEndX = ref(0)
 const isDragging = ref(false)
-const isSidebarOpen = ref(!isMobile.value)
 
 const menuItems = [
   { path: '/admin', label: 'Dashboard', icon: '📊' },
@@ -31,15 +33,8 @@ const menuItems = [
 const navigateTo = (path) => {
   router.push(path)
   activeRoute.value = path
-  if (isMobile.value) {
-    isSidebarOpen.value = false
-  }
-}
-
-const handleResize = () => {
-  isMobile.value = window.innerWidth < 768
-  if (!isMobile.value) {
-    isSidebarOpen.value = true
+  if (props.isMobile) {
+    emit('toggle')
   }
 }
 
@@ -55,9 +50,9 @@ const handleTouchMove = (e) => {
   const diff = touchStartX.value - touchEndX.value
   
   if (diff > 50) {
-    isSidebarOpen.value = false
+    emit('toggle')
   } else if (diff < -50) {
-    isSidebarOpen.value = true
+    emit('toggle')
   }
 }
 
@@ -65,37 +60,37 @@ const handleTouchEnd = () => {
   isDragging.value = false
 }
 
-const toggleSidebar = () => {
-  isSidebarOpen.value = !isSidebarOpen.value
-}
-
 onMounted(() => {
-  window.addEventListener('resize', handleResize)
+  window.addEventListener('resize', () => {
+    emit('toggle')
+  })
 })
 
 onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
+  window.removeEventListener('resize', () => {
+    emit('toggle')
+  })
 })
 </script>
 
 <template>
   <div class="sidebar-wrapper" 
        :class="{ 
-         collapsed: isCollapsed,
-         'mobile-open': isSidebarOpen && isMobile,
-         'mobile-closed': !isSidebarOpen && isMobile
+         collapsed: isCollapsed && !isMobile,
+         'mobile-open': !isCollapsed && isMobile,
+         'mobile-closed': isCollapsed && isMobile
        }"
        @touchstart="handleTouchStart"
        @touchmove="handleTouchMove"
        @touchend="handleTouchEnd">
     <div class="sidebar-overlay" 
-         v-if="isSidebarOpen && isMobile"
-         @click="toggleSidebar"></div>
+         v-if="!isCollapsed && isMobile"
+         @click="$emit('toggle')"></div>
     <nav class="admin-sidebar">
       <div class="sidebar-header">
-        <h2 v-if="!isCollapsed">Menu</h2>
-        <button class="toggle-button" @click="toggleSidebar" v-if="isMobile">
-          <span class="toggle-icon">{{ isSidebarOpen ? '←' : '→' }}</span>
+        <h2 v-if="!isCollapsed || isMobile">Menu</h2>
+        <button class="toggle-button" @click="$emit('toggle')" v-if="isMobile">
+          <span class="toggle-icon">{{ isCollapsed ? '→' : '←' }}</span>
         </button>
       </div>
       <ul class="sidebar-menu">
@@ -104,7 +99,7 @@ onUnmounted(() => {
             :class="{ active: activeRoute === item.path }"
             @click="navigateTo(item.path)">
           <span class="icon">{{ item.icon }}</span>
-          <span class="label" v-if="!isCollapsed">{{ item.label }}</span>
+          <span class="label" v-if="!isCollapsed || isMobile">{{ item.label }}</span>
         </li>
       </ul>
     </nav>
@@ -278,6 +273,7 @@ onUnmounted(() => {
 
   .sidebar-wrapper.mobile-closed {
     transform: translateX(-100%);
+    pointer-events: none;
   }
 
   .toggle-button {

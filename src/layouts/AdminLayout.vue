@@ -2,11 +2,12 @@
 import { getAuth, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
 import AdminSidebar from '@/components/admin/AdminSidebar.vue'
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const auth = getAuth()
 const router = useRouter()
 const isSidebarCollapsed = ref(false)
+const isMobile = ref(window.innerWidth < 768)
 
 const handleLogout = async () => {
   try {
@@ -20,11 +21,26 @@ const handleLogout = async () => {
 const toggleSidebar = () => {
   isSidebarCollapsed.value = !isSidebarCollapsed.value
 }
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth < 768
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <template>
   <div class="admin-layout">
-    <AdminSidebar :is-collapsed="isSidebarCollapsed" />
+    <AdminSidebar 
+      :is-collapsed="isSidebarCollapsed"
+      :is-mobile="isMobile"
+      @toggle="toggleSidebar" />
     <div class="admin-content" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
       <header class="admin-header">
         <div class="header-content">
@@ -219,9 +235,11 @@ const toggleSidebar = () => {
 @media (max-width: 768px) {
   .admin-content {
     margin-left: 0;
+    width: 100%;
   }
 
-  .admin-layout :deep(.collapsed) ~ .admin-content {
+  .admin-layout :deep(.collapsed) ~ .admin-content,
+  .admin-layout :deep(.mobile-closed) ~ .admin-content {
     margin-left: 0;
   }
 
