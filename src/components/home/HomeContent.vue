@@ -6,58 +6,43 @@ const router = useRouter()
 </script>
 
 <template>
-  <div class="home-container">
-    <div class="profile-section">
-      <div class="profile-image">
-        <img src="" alt="Miriam Cléres Forastieri" />
-        <div class="status-dot"></div>
-      </div>
+  <div class="profile-section">
+    <div class="profile-image">
+      <img src="" alt="Miriam Cléres Forastieri" />
+      <div class="status-dot"></div>
+    </div>
+    
+    <div class="profile-info">
+      <h1>MIRIAM CLERES FORASTIERI</h1>
+      <h2>MODELO PROFISSIONAL</h2>
       
-      <div class="profile-info">
-        <h1>MIRIAM CLERES FORASTIERI</h1>
-        <h2>MODELO PROFISSIONAL</h2>
-        
-        <p class="description">
-          TRANSFORMO IDEIAS EM HISTÓRIAS<br>
-          VISUAIS QUE CONECTAM E INSPIRAM.
-        </p>
-      </div>
+      <p class="description">
+        TRANSFORMO IDEIAS EM HISTÓRIAS<br>
+        VISUAIS QUE CONECTAM E INSPIRAM.
+      </p>
+    </div>
 
-      <nav class="navigation">
-        <button class="nav-button">AMOR EM ARTE</button>
-        <button class="nav-button">CUPONS DE DESCONTOS</button>
-        <button class="nav-button">PORTFÓLIO MODELO</button>
-        <button class="nav-button">PORTFÓLIO UGC CREATOR</button>
-        <button class="nav-button">CONTATO</button>
-      </nav>
+    <nav class="navigation">
+      <button class="nav-button">AMOR EM ARTE</button>
+      <button class="nav-button">CUPONS DE DESCONTOS</button>
+      <button class="nav-button">PORTFÓLIO MODELO</button>
+      <button class="nav-button">PORTFÓLIO UGC CREATOR</button>
+      <button class="nav-button">CONTATO</button>
+    </nav>
 
-      <div class="services-section">
-        <h3>Cursos e serviços</h3>
-        <p>Aumente o impacto da sua profissão!</p>
-      </div>
+    <div class="services-section">
+      <h3>Cursos e serviços</h3>
+      <p>Aumente o impacto da sua profissão!</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.home-container {
-  min-height: 100vh;
-  min-width: 100vw;
-  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: auto;
-}
-
 .profile-section {
   max-width: 600px;
   width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
   animation: fadeIn 0.8s ease;
 }
 
@@ -210,7 +195,7 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .home-container {
+  .profile-section {
     padding: 20px;
   }
 
