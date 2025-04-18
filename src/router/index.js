@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth } from 'firebase/auth'
-import LoginForm from '../components/login/LoginForm.vue'
 import Home from '../views/Home.vue'
+import LoginView from '../views/admin/LoginView.vue'
 import InstagramStats from '../views/admin/InstagramStats.vue'
 import Admin from '../views/admin/Admin.vue'
 import Screens from '../views/admin/Screens.vue'
-
 
 const routes = [
   {
@@ -16,9 +15,10 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: LoginForm,
+    component: LoginView,
     meta: {
-      requiresGuest: true // Apenas usuários não logados podem acessar
+      requiresGuest: true,
+      layout: 'AdminLayout'
     }
   },
   {
@@ -26,7 +26,7 @@ const routes = [
     name: 'Admin',
     component: Admin,
     meta: {
-      requiresAuth: true // Requer autenticação
+      requiresAuth: true
     }
   },
   {

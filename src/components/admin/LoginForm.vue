@@ -1,54 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import AuthService from '../../api/auth/AuthService.vue'
-
-const router = useRouter()
-const authService = ref(null)
-const email = ref('')
-const password = ref('')
-const error = ref('')
-const loading = ref(false)
-const focusedInput = ref(null)
-
-const handleLogin = async () => {
-  try {
-    if (!authService.value) {
-      error.value = 'Serviço de autenticação não inicializado'
-      return
-    }
-
-    loading.value = true
-    error.value = ''
-    await authService.value.loginWithEmail(email.value, password.value)
-    
-    if (authService.value.user) {
-      console.log('Login bem sucedido')
-      router.push('/admin')
-    } else if (authService.value.error) {
-      error.value = authService.value.error
-    }
-  } catch (e) {
-    error.value = e.message || 'Erro ao fazer login'
-    console.error('Erro de login:', e)
-  } finally {
-    loading.value = false
-  }
-}
-
-const handleLogout = async () => {
-  await authService.value.logout()
-}
-
-const setFocus = (inputName) => {
-  focusedInput.value = inputName
-}
-
-const clearFocus = () => {
-  focusedInput.value = null
-}
-</script>
-
 <template>
   <div class="login-container">
     <AuthService ref="authService" />
@@ -110,6 +59,57 @@ const clearFocus = () => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import AuthService from '../../api/auth/AuthService.vue'
+
+const router = useRouter()
+const authService = ref(null)
+const email = ref('')
+const password = ref('')
+const error = ref('')
+const loading = ref(false)
+const focusedInput = ref(null)
+
+const handleLogin = async () => {
+  try {
+    if (!authService.value) {
+      error.value = 'Serviço de autenticação não inicializado'
+      return
+    }
+
+    loading.value = true
+    error.value = ''
+    await authService.value.loginWithEmail(email.value, password.value)
+    
+    if (authService.value.user) {
+      console.log('Login bem sucedido')
+      router.push('/admin')
+    } else if (authService.value.error) {
+      error.value = authService.value.error
+    }
+  } catch (e) {
+    error.value = e.message || 'Erro ao fazer login'
+    console.error('Erro de login:', e)
+  } finally {
+    loading.value = false
+  }
+}
+
+const handleLogout = async () => {
+  await authService.value.logout()
+}
+
+const setFocus = (inputName) => {
+  focusedInput.value = inputName
+}
+
+const clearFocus = () => {
+  focusedInput.value = null
+}
+</script>
 
 <style scoped>
 /* Reset básico para garantir que não há margens indesejadas */
