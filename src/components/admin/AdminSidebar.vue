@@ -9,12 +9,15 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['toggle-collapse'])
+
 const router = useRouter()
 const activeRoute = ref(router.currentRoute.value.path)
 const isMobile = ref(window.innerWidth < 768)
 const touchStartX = ref(0)
 const touchEndX = ref(0)
 const isDragging = ref(false)
+const isSidebarOpen = ref(!isMobile.value)
 
 const menuItems = [
   { path: '/admin', label: 'Dashboard', icon: '📊' },
@@ -28,10 +31,16 @@ const menuItems = [
 const navigateTo = (path) => {
   router.push(path)
   activeRoute.value = path
+  if (isMobile.value) {
+    isSidebarOpen.value = false
+  }
 }
 
 const handleResize = () => {
   isMobile.value = window.innerWidth < 768
+  if (!isMobile.value) {
+    isSidebarOpen.value = true
+  }
 }
 
 const handleTouchStart = (e) => {
@@ -44,10 +53,20 @@ const handleTouchMove = (e) => {
   
   touchEndX.value = e.touches[0].clientX
   const diff = touchStartX.value - touchEndX.value
+  
+  if (diff > 50) {
+    isSidebarOpen.value = false
+  } else if (diff < -50) {
+    isSidebarOpen.value = true
+  }
 }
 
 const handleTouchEnd = () => {
   isDragging.value = false
+}
+
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value
 }
 
 onMounted(() => {
@@ -61,15 +80,23 @@ onUnmounted(() => {
 
 <template>
   <div class="sidebar-wrapper" 
-       :class="{ collapsed: isCollapsed }"
+       :class="{ 
+         collapsed: isCollapsed,
+         'mobile-open': isSidebarOpen && isMobile,
+         'mobile-closed': !isSidebarOpen && isMobile
+       }"
        @touchstart="handleTouchStart"
        @touchmove="handleTouchMove"
        @touchend="handleTouchEnd">
     <div class="sidebar-overlay" 
-         v-if="!isCollapsed && isMobile"></div>
+         v-if="isSidebarOpen && isMobile"
+         @click="toggleSidebar"></div>
     <nav class="admin-sidebar">
       <div class="sidebar-header">
         <h2 v-if="!isCollapsed">Menu</h2>
+        <button class="toggle-button" @click="toggleSidebar" v-if="isMobile">
+          <span class="toggle-icon">{{ isSidebarOpen ? '←' : '→' }}</span>
+        </button>
       </div>
       <ul class="sidebar-menu">
         <li v-for="item in menuItems" 
@@ -140,6 +167,7 @@ onUnmounted(() => {
   color: #520;
   padding: 0.5rem;
   transition: transform 0.3s ease;
+  display: none;
 }
 
 .toggle-button:hover {
@@ -244,23 +272,31 @@ onUnmounted(() => {
     transform: translateX(-100%);
   }
 
-  .sidebar-wrapper.collapsed {
+  .sidebar-wrapper.mobile-open {
     transform: translateX(0);
   }
 
+  .sidebar-wrapper.mobile-closed {
+    transform: translateX(-100%);
+  }
+
+  .toggle-button {
+    display: block;
+  }
+
   .admin-sidebar {
-    width: 200px;
+    width: 250px;
   }
 
   .collapsed .admin-sidebar {
-    width: 200px;
+    width: 250px;
   }
 
-  .sidebar-overlay {
-    display: none;
+  .collapsed .label {
+    display: block;
   }
 
-  .collapsed ~ .sidebar-overlay {
+  .collapsed .sidebar-header h2 {
     display: block;
   }
 }
