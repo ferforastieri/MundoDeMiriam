@@ -1,21 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import AuthService from '@/api/auth/AuthService.vue'
+import AuthService from '../api/auth/AuthService.vue'
 
 const router = useRouter()
-const authService = ref(new AuthService())
+const authService = ref(null)
 const email = ref('')
 const password = ref('')
 const error = ref('')
 const loading = ref(false)
 const focusedInput = ref(null)
-
-onMounted(() => {
-  if (!authService.value) {
-    authService.value = new AuthService()
-  }
-})
 
 const handleLogin = async () => {
   try {
@@ -56,64 +50,92 @@ const clearFocus = () => {
 </script>
 
 <template>
-  <div class="login-form">
-    <div class="form-header">
-      <h2>Área Administrativa</h2>
-      <p class="subtitle">Portfólio & Conteúdo</p>
-    </div>
+  <div class="login-container">
+    <AuthService ref="authService" />
     
-    <div v-if="error" class="error-message">
-      <span class="error-icon">!</span>
-      {{ error }}
-    </div>
-    
-    <form @submit.prevent="handleLogin">
-      <div 
-        class="form-group"
-        :class="{ 'focused': focusedInput === 'email', 'filled': email }"
-      >
-        <input 
-          type="email" 
-          id="email" 
-          v-model="email" 
-          required
-          :disabled="loading"
-          @focus="setFocus('email')"
-          @blur="clearFocus"
-        />
-        <label for="email">Email</label>
-        <div class="input-line"></div>
+    <div class="login-form">
+      <div class="form-header">
+        <h2>Área Administrativa</h2>
+        <p class="subtitle">Portfólio & Conteúdo</p>
       </div>
       
-      <div 
-        class="form-group"
-        :class="{ 'focused': focusedInput === 'password', 'filled': password }"
-      >
-        <input 
-          type="password" 
-          id="password" 
-          v-model="password" 
-          required
-          :disabled="loading"
-          @focus="setFocus('password')"
-          @blur="clearFocus"
-        />
-        <label for="password">Senha</label>
-        <div class="input-line"></div>
+      <div v-if="error" class="error-message">
+        <span class="error-icon">!</span>
+        {{ error }}
       </div>
       
-      <button 
-        type="submit" 
-        :disabled="loading"
-        :class="{ 'loading': loading }"
-      >
-        <span class="button-text">{{ loading ? 'Entrando...' : 'Entrar' }}</span>
-      </button>
-    </form>
+      <form @submit.prevent="handleLogin">
+        <div 
+          class="form-group"
+          :class="{ 'focused': focusedInput === 'email', 'filled': email }"
+        >
+          <input 
+            type="email" 
+            id="email" 
+            v-model="email" 
+            required
+            :disabled="loading"
+            @focus="setFocus('email')"
+            @blur="clearFocus"
+          />
+          <label for="email">Email</label>
+          <div class="input-line"></div>
+        </div>
+        
+        <div 
+          class="form-group"
+          :class="{ 'focused': focusedInput === 'password', 'filled': password }"
+        >
+          <input 
+            type="password" 
+            id="password" 
+            v-model="password" 
+            required
+            :disabled="loading"
+            @focus="setFocus('password')"
+            @blur="clearFocus"
+          />
+          <label for="password">Senha</label>
+          <div class="input-line"></div>
+        </div>
+        
+        <button 
+          type="submit" 
+          :disabled="loading"
+          :class="{ 'loading': loading }"
+        >
+          <span class="button-text">{{ loading ? 'Entrando...' : 'Entrar' }}</span>
+        </button>
+      </form>
+    </div>
   </div>
 </template>
 
 <style scoped>
+/* Reset básico para garantir que não há margens indesejadas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  margin: 0;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+}
+
 .login-form {
   width: 100%;
   max-width: 400px;

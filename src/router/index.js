@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth } from 'firebase/auth'
-import HomeView from '@/views/home/HomeView.vue'
-import LoginView from '@/views/login/LoginView.vue'
+import LoginForm from '../components/LoginForm.vue'
+import Home from '../views/Home.vue'
 import InstagramStats from '../views/admin/InstagramStats.vue'
 import Admin from '../views/admin/Admin.vue'
 
@@ -10,12 +10,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: Home
   },
   {
     path: '/login',
     name: 'Login',
-    component: LoginView,
+    component: LoginForm,
     meta: {
       requiresGuest: true // Apenas usuários não logados podem acessar
     }
