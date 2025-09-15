@@ -1,6 +1,6 @@
 <template>
   <nav class="navigation">
-    <CustomButton variant="outline" size="medium" full-width>
+    <CustomButton variant="outline" size="medium" full-width @click="navigateToArtisticPortfolio">
       <TranslatableText text="MAQUIAGEM ARTISTICA" />
     </CustomButton>
     <CustomButton variant="outline" size="medium" full-width @click="navigateToBeautyPortfolio">
@@ -32,8 +32,13 @@ export default {
       router.push('/beauty-portfolio')
     }
     
+    const navigateToArtisticPortfolio = () => {
+      router.push('/artistic-portfolio')
+    }
+    
     return {
-      navigateToBeautyPortfolio
+      navigateToBeautyPortfolio,
+      navigateToArtisticPortfolio
     }
   }
 }
