@@ -9,7 +9,7 @@
     <CustomButton variant="outline" size="medium" full-width>
       <TranslatableText text="FOTOGRAFIA E-COMMERCE" />
     </CustomButton>
-    <CustomButton variant="outline" size="medium" full-width>
+    <CustomButton variant="outline" size="medium" full-width @click="navigateToPartnerships">
       <TranslatableText text="PARCERIAS" />
     </CustomButton>
   </nav>
@@ -36,9 +36,14 @@ export default {
       router.push('/artistic-portfolio')
     }
     
+    const navigateToPartnerships = () => {
+      router.push('/partnerships')
+    }
+    
     return {
       navigateToBeautyPortfolio,
-      navigateToArtisticPortfolio
+      navigateToArtisticPortfolio,
+      navigateToPartnerships
     }
   }
 }
