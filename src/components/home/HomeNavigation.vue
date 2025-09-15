@@ -3,7 +3,7 @@
     <CustomButton variant="outline" size="medium" full-width>
       <TranslatableText text="MAQUIAGEM ARTISTICA" />
     </CustomButton>
-    <CustomButton variant="outline" size="medium" full-width>
+    <CustomButton variant="outline" size="medium" full-width @click="navigateToBeautyPortfolio">
       <TranslatableText text="MAQUIAGEM BEAUTY" />
     </CustomButton>
     <CustomButton variant="outline" size="medium" full-width>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 import { TranslatableText, CustomButton } from '../common'
 
 export default {
@@ -23,6 +24,17 @@ export default {
   components: {
     TranslatableText,
     CustomButton
+  },
+  setup() {
+    const router = useRouter()
+    
+    const navigateToBeautyPortfolio = () => {
+      router.push('/beauty-portfolio')
+    }
+    
+    return {
+      navigateToBeautyPortfolio
+    }
   }
 }
 </script>
