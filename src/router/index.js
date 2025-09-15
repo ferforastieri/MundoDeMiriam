@@ -4,6 +4,7 @@ import HomeView from '../views/home/HomeView.vue'
 import BeautyPortfolio from '../views/portfolio/BeautyPortfolio.vue'
 import ArtisticPortfolio from '../views/portfolio/ArtisticPortfolio.vue'
 import PartnershipsPortfolio from '../views/portfolio/PartnershipsPortfolio.vue'
+import EcommercePortfolio from '../views/portfolio/EcommercePortfolio.vue'
 import LoginView from '../views/admin/LoginView.vue'
 import InstagramStats from '../views/admin/InstagramStats.vue'
 import Admin from '../views/admin/Admin.vue'
@@ -29,6 +30,11 @@ const routes = [
     path: '/partnerships',
     name: 'PartnershipsPortfolio',
     component: PartnershipsPortfolio
+  },
+  {
+    path: '/ecommerce',
+    name: 'EcommercePortfolio',
+    component: EcommercePortfolio
   },
   {
     path: '/login',

@@ -6,7 +6,7 @@
     <CustomButton variant="outline" size="medium" full-width @click="navigateToBeautyPortfolio">
       <TranslatableText text="MAQUIAGEM BEAUTY" />
     </CustomButton>
-    <CustomButton variant="outline" size="medium" full-width>
+    <CustomButton variant="outline" size="medium" full-width @click="navigateToEcommerce">
       <TranslatableText text="FOTOGRAFIA E-COMMERCE" />
     </CustomButton>
     <CustomButton variant="outline" size="medium" full-width @click="navigateToPartnerships">
@@ -40,10 +40,15 @@ export default {
       router.push('/partnerships')
     }
     
+    const navigateToEcommerce = () => {
+      router.push('/ecommerce')
+    }
+    
     return {
       navigateToBeautyPortfolio,
       navigateToArtisticPortfolio,
-      navigateToPartnerships
+      navigateToPartnerships,
+      navigateToEcommerce
     }
   }
 }
