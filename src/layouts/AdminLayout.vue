@@ -2,6 +2,7 @@
 import { getAuth, signOut } from 'firebase/auth'
 import { useRouter } from 'vue-router'
 import AdminSidebar from '@/components/admin/AdminSidebar.vue'
+import { CustomButton } from '@/components/common'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const auth = getAuth()
@@ -45,15 +46,18 @@ onUnmounted(() => {
       <header class="admin-header">
         <div class="header-content">
           <div class="header-left">
-            <button class="toggle-sidebar" @click="toggleSidebar">
-              <span class="toggle-icon">{{ isSidebarCollapsed ? '→' : '←' }}</span>
-            </button>
+            <CustomButton 
+              variant="ghost" 
+              size="small" 
+              @click="toggleSidebar"
+              :icon="isSidebarCollapsed ? '→' : '←'"
+            />
             <img src="/android-chrome-512x512.png" alt="Logo" class="header-logo" />
             <h1>Painel Administrativo</h1>
           </div>
           <div class="user-info">
             <span>{{ auth.currentUser?.email }}</span>
-            <button @click="handleLogout" class="logout-button">Sair</button>
+            <CustomButton @click="handleLogout" variant="ghost" size="small">Sair</CustomButton>
           </div>
         </div>
       </header>
@@ -159,22 +163,7 @@ onUnmounted(() => {
   letter-spacing: 1px;
 }
 
-.logout-button {
-  font-family: 'Gilda Display', serif;
-  padding: 8px 16px;
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-}
-
-.logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-}
+/* Estilos removidos - agora usando CustomButton */
 
 .admin-main {
   flex: 1;

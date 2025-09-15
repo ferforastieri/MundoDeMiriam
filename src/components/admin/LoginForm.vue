@@ -1,11 +1,9 @@
 <template>
   <div class="login-container">
-    <AuthService ref="authService" />
-    
     <div class="login-form">
       <div class="form-header">
-        <h2>Área Administrativa</h2>
-        <p class="subtitle">Portfólio & Conteúdo</p>
+        <h2><TranslatableText text="Área Administrativa" /></h2>
+        <p class="subtitle"><TranslatableText text="Portfólio & Conteúdo" /></p>
       </div>
       
       <div v-if="error" class="error-message">
@@ -27,7 +25,7 @@
             @focus="setFocus('email')"
             @blur="clearFocus"
           />
-          <label for="email">Email</label>
+          <label for="email"><TranslatableText text="Email" /></label>
           <div class="input-line"></div>
         </div>
         
@@ -44,17 +42,19 @@
             @focus="setFocus('password')"
             @blur="clearFocus"
           />
-          <label for="password">Senha</label>
+          <label for="password"><TranslatableText text="Senha" /></label>
           <div class="input-line"></div>
         </div>
         
-        <button 
+        <CustomButton 
           type="submit" 
+          variant="primary"
+          size="large"
+          :loading="loading"
           :disabled="loading"
-          :class="{ 'loading': loading }"
         >
-          <span class="button-text">{{ loading ? 'Entrando...' : 'Entrar' }}</span>
-        </button>
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </CustomButton>
       </form>
     </div>
   </div>
@@ -63,10 +63,10 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import AuthService from '../../api/auth/AuthService.vue'
+import authService from '../../api/auth/AuthService.js'
+import { TranslatableText, CustomButton } from '../common'
 
 const router = useRouter()
-const authService = ref(null)
 const email = ref('')
 const password = ref('')
 const error = ref('')
@@ -75,20 +75,15 @@ const focusedInput = ref(null)
 
 const handleLogin = async () => {
   try {
-    if (!authService.value) {
-      error.value = 'Serviço de autenticação não inicializado'
-      return
-    }
-
     loading.value = true
     error.value = ''
-    await authService.value.loginWithEmail(email.value, password.value)
+    await authService.loginWithEmail(email.value, password.value)
     
-    if (authService.value.user) {
+    if (authService.getCurrentUser()) {
       console.log('Login bem sucedido')
       router.push('/admin')
-    } else if (authService.value.error) {
-      error.value = authService.value.error
+    } else if (authService.getError()) {
+      error.value = authService.getError()
     }
   } catch (e) {
     error.value = e.message || 'Erro ao fazer login'
@@ -99,7 +94,7 @@ const handleLogin = async () => {
 }
 
 const handleLogout = async () => {
-  await authService.value.logout()
+  await authService.logout()
 }
 
 const setFocus = (inputName) => {
@@ -251,39 +246,7 @@ h2 {
   background-color: #520;
 }
 
-button {
-  font-family: 'Gilda Display', serif;
-  width: 100%;
-  padding: 16px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 8px;
-  background-color: #520;
-  color: white;
-  font-size: 16px;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-button:hover:not(:disabled) {
-  background-color: #333;
-  transform: translateY(-2px);
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-button.loading {
-  background-color: #520;
-}
-
-button.loading .button-text {
-  animation: pulse 1.5s ease infinite;
-}
+/* Estilos removidos - agora usando CustomButton */
 
 @keyframes fadeIn {
   from {

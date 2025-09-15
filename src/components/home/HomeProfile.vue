@@ -6,19 +6,23 @@
     
     <div class="profile-info">
       <h1>MIRIAM CLERES FORASTIERI</h1>
-      <h2>MAQUIADORA E FOTÓGRAFA</h2>
+      <h2><TranslatableText text="MAQUIADORA E FOTÓGRAFA" /></h2>
       
       <p class="description">
-        COMPARTILHANDO SOBRE DIVERSOS PARÂMETROS<br>
-        DA MAQUIAGEM E FOTOGRAFIA
+        <TranslatableText text="COMPARTILHANDO SOBRE DIVERSOS PARÂMETROS DA MAQUIAGEM E FOTOGRAFIA" />
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import { TranslatableText } from '../common'
+
 export default {
-  name: 'HomeProfile'
+  name: 'HomeProfile',
+  components: {
+    TranslatableText
+  }
 }
 </script>
 

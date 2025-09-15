@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import InstagramService from '@/api/dashboard/InstagramService.vue'
+import instagramService from '@/api/dashboard/InstagramService.js'
 
 const stats = ref({
   profile: {
@@ -28,17 +28,17 @@ const isLoading = ref(true)
 onMounted(async () => {
   try {
     // Inicializa o serviço com o token mockado
-    const token = await InstagramService.authenticate()
-    await InstagramService.initialize(token)
+    const token = await instagramService.authenticate()
+    await instagramService.initialize(token)
 
     // Carrega os dados do perfil
-    const profile = await InstagramService.getProfile()
+    const profile = await instagramService.getProfile()
     stats.value.profile.followers = profile.followers_count
     stats.value.profile.following = profile.follows_count
     stats.value.profile.posts = profile.media_count
 
     // Carrega os posts recentes
-    const media = await InstagramService.getRecentMedia()
+    const media = await instagramService.getRecentMedia()
     stats.value.recentPosts = media.data.map(post => ({
       id: post.id,
       type: post.media_type.toLowerCase(),
@@ -50,7 +50,7 @@ onMounted(async () => {
     }))
 
     // Calcula a taxa de engajamento
-    stats.value.profile.engagement = await InstagramService.getEngagementRate(stats.value.recentPosts)
+    stats.value.profile.engagement = await instagramService.getEngagementRate(stats.value.recentPosts)
 
     // Por enquanto mantendo os dados mockados para insights
     stats.value.insights = {

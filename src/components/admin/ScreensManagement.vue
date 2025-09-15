@@ -1,10 +1,9 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { FileUpload } from '@/components/common';
-import StorageService from '@/api/StorageService.vue';
+import { FileUpload, CustomButton } from '@/components/common';
+import storageService from '@/api/storage/StorageService.js';
 
 const screens = ref([]);
-const storageService = ref(null);
 
 const handleUploadComplete = async (result) => {
   try {
@@ -27,7 +26,7 @@ const toggleVisibility = (screen) => {
 
 const deleteScreen = async (screen) => {
   try {
-    await storageService.value.deleteFile(screen.imageUrl);
+    await storageService.deleteFile(screen.imageUrl);
     screens.value = screens.value.filter(s => s.id !== screen.id);
   } catch (error) {
     console.error('Erro ao deletar tela:', error);
@@ -41,8 +40,6 @@ onMounted(() => {
 
 <template>
   <div class="screens-management">
-    <StorageService ref="storageService" />
-    
     <div class="upload-section">
       <h2>Upload de Nova Tela</h2>
       <FileUpload @upload-complete="handleUploadComplete" />
@@ -60,12 +57,20 @@ onMounted(() => {
             <h3>{{ screen.title }}</h3>
             <p>{{ screen.description }}</p>
             <div class="screen-controls">
-              <button 
+              <CustomButton 
                 @click="toggleVisibility(screen)"
-                :class="{ 'active': screen.visible }">
+                :variant="screen.visible ? 'success' : 'secondary'"
+                size="small"
+              >
                 {{ screen.visible ? 'Visível' : 'Oculta' }}
-              </button>
-              <button class="delete" @click="deleteScreen(screen)">Excluir</button>
+              </CustomButton>
+              <CustomButton 
+                @click="deleteScreen(screen)"
+                variant="danger"
+                size="small"
+              >
+                Excluir
+              </CustomButton>
             </div>
           </div>
         </div>
@@ -126,23 +131,7 @@ onMounted(() => {
   margin-top: 1rem;
 }
 
-.screen-controls button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.screen-controls button.active {
-  background-color: #520;
-  color: white;
-}
-
-.screen-controls button.delete {
-  background-color: #dc3545;
-  color: white;
-}
+/* Estilos removidos - agora usando CustomButton */
 
 .no-screens {
   text-align: center;

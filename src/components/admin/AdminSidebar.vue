@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
+import { CustomButton } from '../common'
 
 const props = defineProps({
   isCollapsed: {
@@ -89,9 +90,13 @@ onUnmounted(() => {
     <nav class="admin-sidebar">
       <div class="sidebar-header">
         <h2 v-if="!isCollapsed || isMobile">Menu</h2>
-        <button class="toggle-button" @click="$emit('toggle')" v-if="isMobile">
-          <span class="toggle-icon">{{ isCollapsed ? '→' : '←' }}</span>
-        </button>
+        <CustomButton 
+          v-if="isMobile"
+          variant="ghost" 
+          size="small" 
+          @click="$emit('toggle')"
+          :icon="isCollapsed ? '→' : '←'"
+        />
       </div>
       <ul class="sidebar-menu">
         <li v-for="item in menuItems" 
@@ -154,20 +159,7 @@ onUnmounted(() => {
   letter-spacing: 2px;
 }
 
-.toggle-button {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #520;
-  padding: 0.5rem;
-  transition: transform 0.3s ease;
-  display: none;
-}
-
-.toggle-button:hover {
-  transform: scale(1.1);
-}
+/* Estilos removidos - agora usando CustomButton */
 
 .sidebar-menu {
   list-style: none;

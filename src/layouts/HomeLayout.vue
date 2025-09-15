@@ -1,12 +1,18 @@
 <template>
   <div class="home-layout">
+    <LanguageSwitcher />
     <slot></slot>
   </div>
 </template>
 
 <script>
+import { LanguageSwitcher } from '../components/common'
+
 export default {
-  name: 'HomeLayout'
+  name: 'HomeLayout',
+  components: {
+    LanguageSwitcher
+  }
 }
 </script>
 

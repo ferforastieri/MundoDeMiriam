@@ -1,16 +1,32 @@
 <template>
   <nav class="navigation">
-    <button class="nav-button">MAQUIAGEM ARTISTICA</button>
-    <button class="nav-button">MAQUIAGEM BEAUTY</button>
-    <button class="nav-button">FOTOGRAFIA E-COMMERCE</button>
-    <button class="nav-button">PARCERIAS</button>
-    <button class="nav-button">CONTATO</button>
+    <CustomButton variant="outline" size="medium" full-width>
+      <TranslatableText text="MAQUIAGEM ARTISTICA" />
+    </CustomButton>
+    <CustomButton variant="outline" size="medium" full-width>
+      <TranslatableText text="MAQUIAGEM BEAUTY" />
+    </CustomButton>
+    <CustomButton variant="outline" size="medium" full-width>
+      <TranslatableText text="FOTOGRAFIA E-COMMERCE" />
+    </CustomButton>
+    <CustomButton variant="outline" size="medium" full-width>
+      <TranslatableText text="PARCERIAS" />
+    </CustomButton>
+    <CustomButton variant="outline" size="medium" full-width>
+      <TranslatableText text="CONTATO" />
+    </CustomButton>
   </nav>
 </template>
 
 <script>
+import { TranslatableText, CustomButton } from '../common'
+
 export default {
-  name: 'HomeNavigation'
+  name: 'HomeNavigation',
+  components: {
+    TranslatableText,
+    CustomButton
+  }
 }
 </script>
 
@@ -23,26 +39,7 @@ export default {
   animation: slideUp 0.5s ease 0.2s backwards;
 }
 
-.nav-button {
-  font-family: 'Gilda Display', serif;
-  padding: 16px;
-  border: 2px solid #520;
-  border-radius: 8px;
-  background-color: transparent;
-  color: #520;
-  font-size: 15px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.nav-button:hover {
-  background-color: #520;
-  color: white;
-  transform: translateY(-2px);
-}
+/* Estilos removidos - agora usando CustomButton */
 
 @keyframes slideUp {
   from {
@@ -55,10 +52,5 @@ export default {
   }
 }
 
-@media (max-width: 480px) {
-  .nav-button {
-    padding: 14px;
-    font-size: 13px;
-  }
-}
+/* Responsividade agora gerenciada pelo CustomButton */
 </style> 

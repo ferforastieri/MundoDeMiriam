@@ -1,7 +1,5 @@
 <template>
   <div class="file-upload">
-    <StorageService ref="storageService" />
-    
     <input 
       type="file" 
       @change="handleFileUpload" 
@@ -21,13 +19,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import StorageService from '@/api/StorageService.vue';
+import storageService from '@/api/storage/StorageService.js';
 
 const file = ref(null);
 const error = ref('');
 const isUploading = ref(false);
 const uploadProgress = ref(0);
-const storageService = ref(null);
 
 const handleFileUpload = (event) => {
   file.value = event.target.files[0];
@@ -42,7 +39,7 @@ const uploadFile = async () => {
     error.value = '';
     uploadProgress.value = 0;
 
-    const result = await storageService.value.uploadFile(file.value);
+    const result = await storageService.uploadFile(file.value);
     emit('upload-complete', result);
   } catch (err) {
     error.value = err.message;
