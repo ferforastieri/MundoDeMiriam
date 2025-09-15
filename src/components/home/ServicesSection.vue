@@ -46,7 +46,7 @@
         
       </div>
       <div class="image-content">
-        <img src="../../assets/profile/fundo-cursos.jpg" alt="Miriam Cléres - Fale Comigo" />
+        <img src="/assets/profile/fundo-cursos.jpg" alt="Miriam Cléres - Fale Comigo" />
       </div>
     </div>
   </div>

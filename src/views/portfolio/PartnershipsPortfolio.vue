@@ -104,28 +104,10 @@ export default {
               fileName = `freashlady${i}`
             }
             
-            const possiblePaths = [
-              `../../assets/partnership/${partnership.folder}/${fileName}.jpeg`,
-              `/src/assets/partnership/${partnership.folder}/${fileName}.jpeg`,
-              `@/assets/partnership/${partnership.folder}/${fileName}.jpeg`
-            ]
-            
-            let imageUrl = ''
-            for (const path of possiblePaths) {
-              try {
-                imageUrl = new URL(path, import.meta.url).href
-                break
-              } catch (e) {
-                continue
-              }
-            }
-            
-            if (imageUrl) {
-              images.push({
-                src: imageUrl,
-                alt: `${partnership.name} ${i}`
-              })
-            }
+            images.push({
+              src: `/assets/partnership/${partnership.folder}/${fileName}.jpeg`,
+              alt: `${partnership.name} ${i}`
+            })
           }
           
           if (images.length > 0) {

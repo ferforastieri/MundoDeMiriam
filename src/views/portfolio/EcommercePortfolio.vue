@@ -74,28 +74,10 @@ export default {
       
       try {
         for (let i = 1; i <= imageCount; i++) {
-          const possiblePaths = [
-            `../../assets/e-commerce/e-comerce${i}.jpeg`,
-            `/src/assets/e-commerce/e-comerce${i}.jpeg`,
-            `@/assets/e-commerce/e-comerce${i}.jpeg`
-          ]
-          
-          let imageUrl = ''
-          for (const path of possiblePaths) {
-            try {
-              imageUrl = new URL(path, import.meta.url).href
-              break
-            } catch (e) {
-              continue
-            }
-          }
-          
-          if (imageUrl) {
-            images.push({
-              src: imageUrl,
-              alt: `E-commerce ${i}`
-            })
-          }
+          images.push({
+            src: `/assets/e-commerce/e-comerce${i}.jpeg`,
+            alt: `E-commerce ${i}`
+          })
         }
         
         this.ecommerceImages = images

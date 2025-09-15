@@ -74,28 +74,10 @@ export default {
       
       try {
         for (let i = 1; i <= imageCount; i++) {
-          const possiblePaths = [
-            `../../assets/beautystyle/Beauty Style${i}.jpeg`,
-            `/src/assets/beautystyle/Beauty Style${i}.jpeg`,
-            `@/assets/beautystyle/Beauty Style${i}.jpeg`
-          ]
-          
-          let imageUrl = ''
-          for (const path of possiblePaths) {
-            try {
-              imageUrl = new URL(path, import.meta.url).href
-              break
-            } catch (e) {
-              continue
-            }
-          }
-          
-          if (imageUrl) {
-            images.push({
-              src: imageUrl,
-              alt: `Beauty Style ${i}`
-            })
-          }
+          images.push({
+            src: `/assets/beautystyle/Beauty Style${i}.jpeg`,
+            alt: `Beauty Style ${i}`
+          })
         }
         
         this.beautyImages = images
