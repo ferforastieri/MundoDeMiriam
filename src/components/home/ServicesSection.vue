@@ -72,11 +72,11 @@ export default {
 <style scoped>
 .services-section {
   width: 100%;
-  margin: 2rem 0;
+  margin: 1rem 0;
   background: white;
   border-radius: 16px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 2rem;
+  padding: 1rem;
   transition: transform 0.3s ease;
 }
 
@@ -142,10 +142,10 @@ export default {
 
 /* Estilos para informações de contato */
 .contact-info {
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.4rem;
 }
 
 .contact-item {
@@ -216,12 +216,12 @@ export default {
 
 @media (max-width: 480px) {
   .services-section {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .services-content {
     flex-direction: column-reverse;
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
   }
 
@@ -233,8 +233,9 @@ export default {
 
   .title-section {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
+    text-align: center;
   }
 
   .subtitle-inline {
@@ -251,8 +252,9 @@ export default {
   }
 
   .contact-info {
-    margin: 1rem 0;
-    gap: 0.6rem;
+    margin: 0.5rem 0;
+    gap: 0.4rem;
+    align-items: center;
   }
 
   .contact-item {

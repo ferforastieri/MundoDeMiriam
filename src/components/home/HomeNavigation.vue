@@ -12,9 +12,6 @@
     <CustomButton variant="outline" size="medium" full-width>
       <TranslatableText text="PARCERIAS" />
     </CustomButton>
-    <CustomButton variant="outline" size="medium" full-width>
-      <TranslatableText text="CONTATO" />
-    </CustomButton>
   </nav>
 </template>
 
