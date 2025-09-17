@@ -1,10 +1,7 @@
-import axios from 'axios'
-
 class TranslationService {
   constructor() {
     this.cache = new Map()
     this.baseLanguage = 'pt' // Idioma base do site
-    this.apiUrl = 'https://api.mymemory.translated.net/get' // API gratuita
     this.userLanguagePreference = null // Preferência manual do usuário
     
     // Carrega preferência salva ou detecta idioma
@@ -109,27 +106,148 @@ class TranslationService {
     }
 
     try {
-      const response = await axios.get(this.apiUrl, {
-        params: {
-          q: text,
-          langpair: `${this.baseLanguage}|${this.currentLanguage}`
-        },
-        timeout: 5000 // 5 segundos de timeout
-      })
-
-      if (response.data && response.data.responseStatus === 200) {
-        const translatedText = response.data.responseData.translatedText
-        
-        // Salva no cache
-        this.cache.set(text, translatedText)
-        
-        return translatedText
-      }
+      // Tenta múltiplas APIs gratuitas
+      const translatedText = await this.translateWithMultipleAPIs(text)
+      
+      // Salva no cache
+      this.cache.set(text, translatedText)
+      
+      return translatedText
     } catch (error) {
       console.warn('Erro na tradução:', error.message)
     }
 
     // Se falhar, retorna o texto original
+    return text
+  }
+
+  // Tenta traduzir com múltiplas APIs gratuitas
+  async translateWithMultipleAPIs(text) {
+    // Lista de APIs gratuitas para tentar
+    const apis = [
+      () => this.translateWithGoogleTranslateProxy(text),
+      () => this.translateWithLibreTranslate(text),
+      () => this.translateWithSimpleDict(text)
+    ]
+
+    // Tenta cada API até uma funcionar
+    for (const api of apis) {
+      try {
+        const result = await api()
+        if (result && result !== text) {
+          return result
+        }
+      } catch (error) {
+        console.warn('API falhou, tentando próxima:', error.message)
+        continue
+      }
+    }
+
+    // Se todas falharem, retorna o texto original
+    return text
+  }
+
+  // Google Translate via proxy (sem CORS)
+  async translateWithGoogleTranslateProxy(text) {
+    const proxyUrl = 'https://api.allorigins.win/raw?url='
+    const translateUrl = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${this.baseLanguage}&tl=${this.currentLanguage}&dt=t&q=${encodeURIComponent(text)}`
+    
+    const response = await fetch(proxyUrl + encodeURIComponent(translateUrl))
+    
+    if (response.ok) {
+      const data = await response.json()
+      if (data && data[0] && data[0][0] && data[0][0][0]) {
+        return data[0][0][0]
+      }
+    }
+    throw new Error('Google Translate proxy failed')
+  }
+
+  // LibreTranslate (gratuito e open source)
+  async translateWithLibreTranslate(text) {
+    const response = await fetch('https://libretranslate.de/translate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        q: text,
+        source: this.baseLanguage,
+        target: this.currentLanguage,
+        format: 'text'
+      })
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+      return data.translatedText
+    }
+    throw new Error('LibreTranslate failed')
+  }
+
+
+
+  // Dicionário simples como fallback
+  async translateWithSimpleDict(text) {
+    const translations = {
+      'en': {
+        'SOBRE MIM': 'ABOUT ME',
+        'MAQUIAGEM ARTISTICA': 'ARTISTIC MAKEUP',
+        'MAQUIAGEM BEAUTY': 'BEAUTY MAKEUP',
+        'FOTOGRAFIA E-COMMERCE': 'E-COMMERCE PHOTOGRAPHY',
+        'PARCERIAS': 'PARTNERSHIPS',
+        'Voltar': 'Back',
+        'Sobre Mim': 'About Me',
+        'Conheça minha história e paixão pela arte da maquiagem': 'Learn about my story and passion for makeup art',
+        'Maquiadora Profissional & Fotógrafa': 'Professional Makeup Artist & Photographer',
+        'Especialidades': 'Specialties',
+        'Entre em Contato': 'Get in Touch',
+        'Fale Comigo': 'Contact Me',
+        'WhatsApp: (15) 92002-9139': 'WhatsApp: (15) 92002-9139'
+      },
+      'es': {
+        'SOBRE MIM': 'SOBRE MÍ',
+        'MAQUIAGEM ARTISTICA': 'MAQUILLAJE ARTÍSTICO',
+        'MAQUIAGEM BEAUTY': 'MAQUILLAJE BELLEZA',
+        'FOTOGRAFIA E-COMMERCE': 'FOTOGRAFÍA E-COMMERCE',
+        'PARCERIAS': 'ASOCIACIONES',
+        'Voltar': 'Volver',
+        'Sobre Mim': 'Sobre Mí',
+        'Conheça minha história e paixão pela arte da maquiagem': 'Conoce mi historia y pasión por el arte del maquillaje',
+        'Maquiadora Profissional & Fotógrafa': 'Maquilladora Profesional y Fotógrafa',
+        'Especialidades': 'Especialidades',
+        'Entre em Contato': 'Ponte en Contacto',
+        'Fale Comigo': 'Háblame',
+        'WhatsApp: (15) 92002-9139': 'WhatsApp: (15) 92002-9139'
+      },
+      'fr': {
+        'SOBRE MIM': 'À PROPOS DE MOI',
+        'MAQUIAGEM ARTISTICA': 'MAQUILLAGE ARTISTIQUE',
+        'MAQUIAGEM BEAUTY': 'MAQUILLAGE BEAUTÉ',
+        'FOTOGRAFIA E-COMMERCE': 'PHOTOGRAPHIE E-COMMERCE',
+        'PARCERIAS': 'PARTENARIATS',
+        'Voltar': 'Retour',
+        'Sobre Mim': 'À Propos de Moi',
+        'Conheça minha história e paixão pela arte da maquiagem': 'Découvrez mon histoire et ma passion pour l\'art du maquillage',
+        'Maquiadora Profissional & Fotógrafa': 'Maquilleuse Professionnelle et Photographe',
+        'Especialidades': 'Spécialités',
+        'Entre em Contato': 'Contactez-moi',
+        'Fale Comigo': 'Parlez-moi',
+        'WhatsApp: (15) 92002-9139': 'WhatsApp: (15) 92002-9139'
+      }
+    }
+
+    const langTranslations = translations[this.currentLanguage]
+    if (langTranslations && langTranslations[text]) {
+      return langTranslations[text]
+    }
+    
+    // Se não encontrar no dicionário, retorna o texto original
+    return text
+  }
+
+  // Fallback simples - retorna o texto original se todas as APIs falharem
+  simpleTranslate(text) {
     return text
   }
 
