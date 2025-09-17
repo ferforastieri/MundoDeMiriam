@@ -3,12 +3,39 @@ import axios from 'axios'
 class TranslationService {
   constructor() {
     this.cache = new Map()
-    this.currentLanguage = this.detectLanguage()
     this.baseLanguage = 'pt' // Idioma base do site
     this.apiUrl = 'https://api.mymemory.translated.net/get' // API gratuita
+    this.userLanguagePreference = null // Preferência manual do usuário
     
-    // Escuta mudanças de idioma do navegador
+    // Carrega preferência salva ou detecta idioma
+    this.currentLanguage = this.loadUserPreference() || this.detectLanguage()
+    
+    // Escuta mudanças de idioma do navegador (apenas se não houver preferência manual)
     this.setupLanguageChangeListener()
+  }
+
+  // Carrega preferência de idioma salva no localStorage
+  loadUserPreference() {
+    try {
+      const saved = localStorage.getItem('userLanguagePreference')
+      if (saved) {
+        this.userLanguagePreference = saved
+        return saved
+      }
+    } catch (error) {
+      console.warn('Erro ao carregar preferência de idioma:', error)
+    }
+    return null
+  }
+
+  // Salva preferência de idioma no localStorage
+  saveUserPreference(langCode) {
+    try {
+      localStorage.setItem('userLanguagePreference', langCode)
+      this.userLanguagePreference = langCode
+    } catch (error) {
+      console.warn('Erro ao salvar preferência de idioma:', error)
+    }
   }
 
   // Detecta o idioma do navegador do usuário
@@ -28,26 +55,31 @@ class TranslationService {
 
   // Configura listener para mudanças de idioma
   setupLanguageChangeListener() {
-    // Escuta mudanças no idioma do navegador
+    // Escuta mudanças no idioma do navegador (apenas se não houver preferência manual)
     window.addEventListener('languagechange', () => {
-      const newLanguage = this.detectLanguage()
-      if (newLanguage !== this.currentLanguage) {
-        this.setLanguage(newLanguage)
-        // Dispara evento para notificar componentes
-        window.dispatchEvent(new CustomEvent('languageChanged', {
-          detail: { language: newLanguage }
-        }))
+      // Só muda automaticamente se o usuário não definiu uma preferência manual
+      if (!this.userLanguagePreference) {
+        const newLanguage = this.detectLanguage()
+        if (newLanguage !== this.currentLanguage) {
+          this.setLanguage(newLanguage)
+          // Dispara evento para notificar componentes
+          window.dispatchEvent(new CustomEvent('languageChanged', {
+            detail: { language: newLanguage }
+          }))
+        }
       }
     })
 
-    // Verifica mudanças periodicamente (fallback)
+    // Verifica mudanças periodicamente (fallback) - apenas se não houver preferência manual
     setInterval(() => {
-      const newLanguage = this.detectLanguage()
-      if (newLanguage !== this.currentLanguage) {
-        this.setLanguage(newLanguage)
-        window.dispatchEvent(new CustomEvent('languageChanged', {
-          detail: { language: newLanguage }
-        }))
+      if (!this.userLanguagePreference) {
+        const newLanguage = this.detectLanguage()
+        if (newLanguage !== this.currentLanguage) {
+          this.setLanguage(newLanguage)
+          window.dispatchEvent(new CustomEvent('languageChanged', {
+            detail: { language: newLanguage }
+          }))
+        }
       }
     }, 5000) // Verifica a cada 5 segundos
   }
@@ -58,10 +90,10 @@ class TranslationService {
     if (this.currentLanguage === this.baseLanguage) return false
     if (this.cache.has(text)) return false
     
-    // Não traduz textos muito curtos ou que parecem ser nomes próprios
+    // Não traduz textos muito curtos
     if (text.length < 3) return false
-    if (text === text.toUpperCase() && text.length < 20) return false // Nomes em maiúscula
     
+    // Permite tradução de textos em maiúscula (como os botões do menu)
     return true
   }
 
@@ -108,10 +140,21 @@ class TranslationService {
   }
 
   // Muda o idioma atual
-  setLanguage(langCode) {
+  setLanguage(langCode, isUserChoice = false) {
     this.currentLanguage = langCode
+    
+    // Se for uma escolha manual do usuário, salva a preferência
+    if (isUserChoice) {
+      this.saveUserPreference(langCode)
+    }
+    
     // Limpa o cache para forçar nova tradução
     this.cache.clear()
+    
+    // Dispara evento para notificar componentes sobre mudança de idioma
+    window.dispatchEvent(new CustomEvent('languageChanged', {
+      detail: { language: langCode }
+    }))
   }
 
   // Obtém o idioma atual
@@ -129,6 +172,19 @@ class TranslationService {
       { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
       { code: 'it', name: 'Italiano', flag: '🇮🇹' }
     ]
+  }
+
+  // Limpa a preferência do usuário (volta ao comportamento automático)
+  clearUserPreference() {
+    try {
+      localStorage.removeItem('userLanguagePreference')
+      this.userLanguagePreference = null
+      // Volta para detecção automática
+      const newLanguage = this.detectLanguage()
+      this.setLanguage(newLanguage)
+    } catch (error) {
+      console.warn('Erro ao limpar preferência de idioma:', error)
+    }
   }
 }
 

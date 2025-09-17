@@ -31,12 +31,8 @@ onMounted(() => {
 
 // Função para mudar idioma
 const changeLanguage = () => {
-  translationService.setLanguage(selectedLanguage.value)
-  
-  // Dispara evento customizado para notificar outros componentes
-  window.dispatchEvent(new CustomEvent('languageChanged', {
-    detail: { language: selectedLanguage.value }
-  }))
+  // Marca como escolha manual do usuário
+  translationService.setLanguage(selectedLanguage.value, true)
   
   // Não precisa recarregar a página - os componentes reagem automaticamente
 }

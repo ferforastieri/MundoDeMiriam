@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import translationService from '../../api/translation/TranslationService.js'
 
 const props = defineProps({
@@ -52,16 +52,20 @@ watch(() => props.text, () => {
 })
 
 // Escuta mudanças de idioma em tempo real
+let handleLanguageChange
+
 onMounted(() => {
-  // Listener para mudanças de idioma
-  const handleLanguageChange = () => {
+
+  handleLanguageChange = () => {
+    console.log('Language changed, retranslating:', props.text)
     translateText()
   }
   
   window.addEventListener('languageChanged', handleLanguageChange)
-  
-  // Cleanup quando o componente for desmontado
-  return () => {
+})
+
+onUnmounted(() => {
+  if (handleLanguageChange) {
     window.removeEventListener('languageChanged', handleLanguageChange)
   }
 })

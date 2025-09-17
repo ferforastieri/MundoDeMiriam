@@ -1,5 +1,8 @@
 <template>
   <nav class="navigation">
+    <CustomButton variant="outline" size="medium" full-width @click="navigateToAbout">
+      <TranslatableText text="SOBRE MIM" />
+    </CustomButton>
     <CustomButton variant="outline" size="medium" full-width @click="navigateToArtisticPortfolio">
       <TranslatableText text="MAQUIAGEM ARTISTICA" />
     </CustomButton>
@@ -44,7 +47,12 @@ export default {
       router.push('/ecommerce')
     }
     
+    const navigateToAbout = () => {
+      router.push('/about')
+    }
+    
     return {
+      navigateToAbout,
       navigateToBeautyPortfolio,
       navigateToArtisticPortfolio,
       navigateToPartnerships,
