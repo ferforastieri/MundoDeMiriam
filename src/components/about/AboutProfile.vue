@@ -75,6 +75,18 @@
           <h3><TranslatableText text="Entre em Contato" /></h3>
           <p><TranslatableText text="Pronta para transformar sua visão em realidade? Vamos conversar sobre seu próximo projeto!" /></p>
         </div>
+
+        <!-- Curriculum Section -->
+        <div class="curriculum-section">
+          <h3><TranslatableText text="Currículo Profissional" /></h3>
+          <p><TranslatableText text="Conheça minha experiência profissional completa e baixe meu currículo em PDF." /></p>
+          <button @click="goToCurriculum" class="curriculum-button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+            </svg>
+            <span><TranslatableText text="Ver Currículo" /></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -95,9 +107,14 @@ export default {
     const goBack = () => {
       router.push('/')
     }
+
+    const goToCurriculum = () => {
+      router.push('/curriculum')
+    }
     
     return {
-      goBack
+      goBack,
+      goToCurriculum
     }
   }
 }
@@ -285,6 +302,53 @@ export default {
   color: #666;
   margin: 0;
   line-height: 1.5;
+}
+
+.curriculum-section {
+  background: #520;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.curriculum-section h3 {
+  font-family: 'Gilda Display', serif;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 0 1rem 0;
+  font-weight: normal;
+}
+
+.curriculum-section p {
+  font-family: 'Gilda Display', serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.5;
+}
+
+.curriculum-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  color: #520;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Gilda Display', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.curriculum-button:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {

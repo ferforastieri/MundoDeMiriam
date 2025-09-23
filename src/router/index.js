@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { getAuth } from 'firebase/auth'
 import HomeView from '../views/home/HomeView.vue'
 import AboutView from '../views/about/AboutView.vue'
+import CurriculumView from '../views/curriculum/CurriculumView.vue'
 import BeautyPortfolio from '../views/portfolio/BeautyPortfolio.vue'
 import ArtisticPortfolio from '../views/portfolio/ArtisticPortfolio.vue'
 import PartnershipsPortfolio from '../views/portfolio/PartnershipsPortfolio.vue'
@@ -21,6 +22,11 @@ const routes = [
     path: '/about',
     name: 'About',
     component: AboutView
+  },
+  {
+    path: '/curriculum',
+    name: 'Curriculum',
+    component: CurriculumView
   },
   {
     path: '/beauty-portfolio',
