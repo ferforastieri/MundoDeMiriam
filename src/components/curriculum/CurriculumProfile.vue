@@ -36,8 +36,14 @@
               </svg>
               Meu Portfolio
             </a>
+            <a href="https://instagram.com/mihforastieri" target="_blank" rel="noopener noreferrer" class="instagram-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              Instagram
+            </a>
           </p>
-          <p class="location">Belo Horizonte, Minas Gerais</p>
+          <p class="location">Sorocaba, São Paulo</p>
         </div>
         <div class="profile-image">
           <img src="/assets/profile/fotodalinda.jpg" alt="Miriam - Maquiadora" />
@@ -49,10 +55,10 @@
         <h3 class="section-title">Sobre</h3>
         <div class="section-content">
           <p>
-            Profissional com experiência em vendas, atendimento ao cliente e operações de loja, incluindo caixa e estoque. Habilidade em comunicação, organização e trabalho em equipe. Também possui experiência como maquiadora e fotógrafa, com conhecimento em marketing para redes sociais.
+            Maquiadora profissional especializada em maquiagem artística, beauty e fotografia e-commerce. Experiência em vendas, atendimento ao cliente e operações de loja.
           </p>
           <p>
-            Formação acadêmica inclui Ensino Médio completo e cursos técnicos em Aviação Civil e Fotografia & Marketing para redes sociais. Motivada, proativa e com facilidade para aprender e se adaptar a diferentes ambientes de trabalho.
+            Expertise em fotografia profissional, edição digital e marketing para redes sociais. Conhecimento avançado em colorimetria, iluminação e produção de conteúdo visual. Profissional proativa, organizada e com facilidade para trabalhar em equipe.
           </p>
         </div>
       </div>
@@ -62,31 +68,26 @@
         <h3 class="section-title">Habilidades</h3>
         <div class="skills-content">
           <div class="skill-category">
-            <h4>Atendimento e Vendas</h4>
+            <h4>Maquiagem</h4>
             <ul>
-              <li>Atendimento ao Cliente</li>
+              <li>Maquiagem Artística</li>
+              <li>Beauty Makeup</li>
+              <li>Colorimetria</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h4>Vendas e Operações</h4>
+            <ul>
+              <li>Vendas Consultivas</li>
               <li>Operação de Caixa</li>
-              <li>Organização de Loja</li>
-              <li>Comunicação</li>
-              <li>Relacionamento com o Cliente</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <h4>Arte e Fotografia</h4>
-            <ul>
-              <li>Maquiagem</li>
-              <li>Fotografia Profissional</li>
-              <li>Marketing para Redes Sociais</li>
-              <li>Produção de Imagem</li>
-            </ul>
-          </div>
-          <div class="skill-category">
-            <h4>Operações</h4>
-            <ul>
               <li>Controle de Estoque</li>
-              <li>Operação de Loja</li>
-              <li>Vendas</li>
-              <li>Experiência em Shopping</li>
+            </ul>
+          </div>
+          <div class="skill-category">
+            <h4>Fotografia</h4>
+            <ul>
+              <li>Fotografia Beauty</li>
+              <li>Marketing Digital</li>
             </ul>
           </div>
         </div>
@@ -98,24 +99,138 @@
         <div class="education-content">
           <div class="education-item">
             <div class="education-header">
-              <h4>Ensino Médio Completo</h4>
-              <span class="period">01/2015 - 12/2018</span>
+              <h4>Curso Aviação Civil - Comissário de Bordo</h4>
+              <span class="period">01/2020 - 12/2021</span>
             </div>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Sorocaba, São Paulo</p>
           </div>
           <div class="education-item">
             <div class="education-header">
               <h4>Curso Fotografia e Marketing para Redes Sociais</h4>
               <span class="period">01/2018 - 12/2019</span>
             </div>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Sorocaba, São Paulo</p>
           </div>
           <div class="education-item">
             <div class="education-header">
-              <h4>Curso Aviação Civil - Comissário de Bordo</h4>
-              <span class="period">01/2020 - 12/2021</span>
+              <h4>Ensino Médio Completo</h4>
+              <span class="period">01/2015 - 12/2018</span>
             </div>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Sorocaba, São Paulo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specializations Section -->
+      <div class="section">
+        <h3 class="section-title">Especializações</h3>
+        <div class="education-content">
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Masterclass Fotografia e Edição</h4>
+              <span class="period">2025</span>
+            </div>
+            <p class="location">Nathalia Teodoro</p>
+            <p class="description">Fotografia profissional, edição digital e técnicas avançadas de pós-produção.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Segredos da Make LiftGlow</h4>
+              <span class="period">2024</span>
+            </div>
+            <p class="location">Luana Charamba</p>
+            <p class="description">Técnicas de maquiagem com lifting facial e efeito glow para realçar beleza natural.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Nível Social Make Atendimento</h4>
+              <span class="period">2024</span>
+            </div>
+            <p class="location">Carla Marinhos</p>
+            <p class="description">Maquiagem para eventos sociais e atendimento profissional especializado.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Maquiadora Nível Milionária</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Carla Marinhos</p>
+            <p class="description">Maquiagem profissional avançada e estratégias de gestão de carreira.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Curso de Transformação De Maquiagem</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Katiely Marques</p>
+            <p class="description">Técnicas de transformação, correção facial e modelagem através da maquiagem.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Descomplicando a Maquiagem</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Workshop Katiely Marques</p>
+            <p class="description">Workshop prático em técnicas básicas de maquiagem e ensino didático.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>O Segredo Dos Reels e Fotos Que Viralizam</h4>
+              <span class="period">2023</span>
+            </div>
+            <p class="location">O Biel Moura</p>
+            <p class="description">Criação de conteúdo viral no Instagram com estratégias de reels e engajamento.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>O Segredo Das Fotos De Maquiagem</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Carla Marinhos</p>
+            <p class="description">Fotografia especializada para maquiagem com técnicas de iluminação e composição.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Guia de Conteúdo Para Instagram</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Nathalia Teodoro</p>
+            <p class="description">Estratégias de conteúdo para Instagram com planejamento e otimização de posts.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Guia de Vídeos para Redes Sociais</h4>
+              <span class="period">2022</span>
+            </div>
+            <p class="location">Nathalia Teodoro</p>
+            <p class="description">Criação de conteúdo audiovisual para redes sociais e estratégias digitais.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Fotografia para Maquiadores</h4>
+              <span class="period">2021</span>
+            </div>
+            <p class="location">Nathalia Teodoro</p>
+            <p class="description">Fotografia para maquiagem com captura de detalhes e iluminação beauty.</p>
+          </div>
+          
+          <div class="education-item">
+            <div class="education-header">
+              <h4>Colorimetria como Você Nunca Viu</h4>
+              <span class="period">2020</span>
+            </div>
+            <p class="location">Nathalia Teodoro</p>
+            <p class="description">Teoria das cores aplicada à maquiagem e técnicas de correção de cor.</p>
           </div>
         </div>
       </div>
@@ -126,15 +241,40 @@
         <div class="experience-content">
           <div class="experience-item">
             <div class="experience-header">
+              <h4>Operador de Loja, Vendedora Setor Maquiagem</h4>
+              <span class="period">2025</span>
+            </div>
+            <p class="company">Supermercado dos Cosméticos Princesa</p>
+            <p class="location">Sorocaba, São Paulo</p>
+            <ul class="responsibilities">
+              <li>Consultoria especializada em maquiagem e vendas de produtos de beleza.</li>
+              <li>Operação de loja, controle de estoque e atendimento personalizado ao cliente.</li>
+            </ul>
+          </div>
+          
+          <div class="experience-item">
+            <div class="experience-header">
+              <h4>Vendedora</h4>
+              <span class="period">2024</span>
+            </div>
+            <p class="company">Mais Q Makeup</p>
+            <p class="location">Betim, Minas Gerais</p>
+            <ul class="responsibilities">
+              <li>Vendas consultivas de produtos de maquiagem e demonstração de técnicas.</li>
+              <li>Atendimento especializado e relacionamento com clientes no setor de beleza.</li>
+            </ul>
+          </div>
+          
+          <div class="experience-item">
+            <div class="experience-header">
               <h4>Caixa e Operadora de Loja</h4>
               <span class="period">01/2024 - 12/2024</span>
             </div>
             <p class="company">Shopping Partage Estripulia</p>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Betim, Minas Gerais</p>
             <ul class="responsibilities">
-              <li>Atuação no setor de varejo, auxiliando clientes no processo de compra e garantindo um atendimento eficiente.</li>
-              <li>Responsável pela operação de caixa, controle de estoque e organização da loja.</li>
-              <li>Desenvolvimento de habilidades em vendas, atendimento ao público e gestão de produtos.</li>
+              <li>Operação de caixa, controle de estoque e atendimento ao cliente.</li>
+              <li>Vendas no setor de varejo e organização da loja.</li>
             </ul>
           </div>
           <div class="experience-item">
@@ -143,11 +283,10 @@
               <span class="period">01/2020 - 12/2023</span>
             </div>
             <p class="company">Salão de beleza</p>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Juatuba, Minas Gerais</p>
             <ul class="responsibilities">
-              <li>Atuação como maquiadora profissional, oferecendo serviços personalizados para eventos e ensaios fotográficos.</li>
-              <li>Responsável pela captação e edição de imagens, promovendo a marca por meio de estratégias de marketing para redes sociais.</li>
-              <li>Desenvolvimento de técnicas de maquiagem, fotografia profissional e branding digital.</li>
+              <li>Maquiagem profissional para eventos e ensaios fotográficos.</li>
+              <li>Fotografia, edição de imagens e marketing para redes sociais.</li>
             </ul>
           </div>
           <div class="experience-item">
@@ -156,11 +295,10 @@
               <span class="period">01/2020 - 12/2021</span>
             </div>
             <p class="company">Jadore Semijoias</p>
-            <p class="location">Belo Horizonte, Minas Gerais</p>
+            <p class="location">Juatuba, Minas Gerais</p>
             <ul class="responsibilities">
-              <li>Atuação no setor de vendas, auxiliando clientes na escolha de produtos e garantindo um atendimento de qualidade.</li>
-              <li>Responsável pela operação de caixa, controle de pagamentos e organização do ambiente de trabalho para melhor experiência do cliente.</li>
-              <li>Desenvolvimento de habilidades de comunicação, negociação e fidelização de clientes.</li>
+              <li>Vendas de semijoias e atendimento especializado ao cliente.</li>
+              <li>Operação de caixa e controle de pagamentos.</li>
             </ul>
           </div>
         </div>
@@ -203,7 +341,7 @@ export default {
 
         // Configurações do PDF
         const opt = {
-          margin: [0.2, 0.3, 0.2, 0.3],
+          margin: [0.3, 0.3, 0.3, 0.3], // Top, Left, Bottom, Right
           filename: 'curriculo-miriam.pdf',
           image: { type: 'jpeg', quality: 0.98 },
           html2canvas: { 
@@ -375,7 +513,8 @@ export default {
   margin: 0 0 0.5rem 0;
 }
 
-.profile-info .website .portfolio-link {
+.profile-info .website .portfolio-link,
+.profile-info .website .instagram-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -386,9 +525,11 @@ export default {
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   background: rgba(82, 0, 0, 0.05);
+  margin-right: 0.5rem;
 }
 
-.profile-info .website .portfolio-link:hover {
+.profile-info .website .portfolio-link:hover,
+.profile-info .website .instagram-link:hover {
   background: rgba(82, 0, 0, 0.1);
   transform: translateY(-1px);
 }
@@ -428,6 +569,18 @@ export default {
 .pdf-export .curriculum-header {
   margin-bottom: 1rem !important;
   padding: 1rem !important;
+}
+
+/* Controle de quebras de página para PDF */
+.pdf-export .section {
+  page-break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.pdf-export .experience-item,
+.pdf-export .education-item {
+  page-break-inside: avoid;
+  margin-bottom: 1rem;
 }
 
 .section {
@@ -554,6 +707,14 @@ export default {
   font-weight: bold;
   position: absolute;
   left: 0;
+}
+
+.education-item .description {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 @keyframes fadeIn {
