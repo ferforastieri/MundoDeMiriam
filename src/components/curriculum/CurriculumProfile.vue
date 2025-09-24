@@ -29,6 +29,14 @@
         <div class="profile-info">
           <h2 class="name">Miriam</h2>
           <p class="title">Maquiadora Profissional & Fotógrafa</p>
+          <p class="website">
+            <a href="https://mundodemiriam.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"/>
+              </svg>
+              Meu Portfolio
+            </a>
+          </p>
           <p class="location">Belo Horizonte, Minas Gerais</p>
         </div>
         <div class="profile-image">
@@ -195,15 +203,27 @@ export default {
 
         // Configurações do PDF
         const opt = {
-          margin: 1,
+          margin: [0.2, 0.3, 0.2, 0.3],
           filename: 'curriculo-miriam.pdf',
           image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
+          html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            scrollX: 0,
+            scrollY: 0
+          },
           jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
         }
 
+        // Aplicar estilos específicos para o PDF
+        curriculumContent.value.classList.add('pdf-export')
+        
         // Gerar PDF mantendo os links clicáveis
         await html2pdf().set(opt).from(curriculumContent.value).save()
+        
+        // Remover classe após exportação
+        curriculumContent.value.classList.remove('pdf-export')
 
         // Restaurar botão
         downloadBtn.value.innerHTML = originalText
@@ -349,6 +369,30 @@ export default {
   font-style: italic;
 }
 
+.profile-info .website {
+  font-size: 1rem;
+  color: #520;
+  margin: 0 0 0.5rem 0;
+}
+
+.profile-info .website .portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #520;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: rgba(82, 0, 0, 0.05);
+}
+
+.profile-info .website .portfolio-link:hover {
+  background: rgba(82, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
 .profile-info .location {
   font-size: 1rem;
   color: #888;
@@ -365,6 +409,25 @@ export default {
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #520;
+}
+
+/* Estilos específicos para PDF */
+.pdf-export .profile-image img {
+  width: 80px !important;
+  height: 80px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border: 3px solid #520 !important;
+}
+
+.pdf-export .curriculum-content {
+  padding-top: 0.5rem !important;
+  margin-top: 0 !important;
+}
+
+.pdf-export .curriculum-header {
+  margin-bottom: 1rem !important;
+  padding: 1rem !important;
 }
 
 .section {
