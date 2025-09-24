@@ -102,21 +102,21 @@
               <h4>Curso Aviação Civil - Comissário de Bordo</h4>
               <span class="period">01/2020 - 12/2021</span>
             </div>
-            <p class="location">Sorocaba, São Paulo</p>
+            <p class="location">Belo Horizonte, Minas Gerais</p>
           </div>
           <div class="education-item">
             <div class="education-header">
               <h4>Curso Fotografia e Marketing para Redes Sociais</h4>
               <span class="period">01/2018 - 12/2019</span>
             </div>
-            <p class="location">Sorocaba, São Paulo</p>
+            <p class="location">Belo Horizonte, Minas Gerais</p>
           </div>
           <div class="education-item">
             <div class="education-header">
               <h4>Ensino Médio Completo</h4>
               <span class="period">01/2015 - 12/2018</span>
             </div>
-            <p class="location">Sorocaba, São Paulo</p>
+            <p class="location">Belo Horizonte, Minas Gerais</p>
           </div>
         </div>
       </div>
