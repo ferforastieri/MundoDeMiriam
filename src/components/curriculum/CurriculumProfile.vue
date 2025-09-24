@@ -413,11 +413,11 @@ export default {
 
 /* Estilos específicos para PDF */
 .pdf-export .profile-image img {
-  width: 80px !important;
-  height: 80px !important;
+  width: 120px !important;
+  height: 120px !important;
   object-fit: cover !important;
   object-position: center !important;
-  border: 3px solid #520 !important;
+  border: 4px solid #520 !important;
 }
 
 .pdf-export .curriculum-content {
