@@ -591,6 +591,24 @@ export default {
   margin-bottom: 1rem;
 }
 
+/* Links do header ficam lado a lado no PDF - sobrescreve regras mobile */
+.pdf-export .profile-info .website {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+}
+
+.pdf-export .profile-info .website .portfolio-link,
+.pdf-export .profile-info .website .instagram-link,
+.pdf-export .profile-info .website .whatsapp-link {
+  display: inline-flex !important;
+  width: auto !important;
+  justify-content: flex-start !important;
+  margin-right: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
 .section {
   margin-bottom: 2rem;
 }
@@ -790,7 +808,7 @@ export default {
     padding: 1.5rem;
   }
   
-  /* Links empilhados no mobile */
+  /* Links empilhados no mobile - exceto no PDF */
   .profile-info .website {
     display: flex !important;
     flex-direction: column !important;
@@ -824,22 +842,6 @@ export default {
     font-size: 0.8rem;
   }
   
-  /* Garantir links empilhados em telas pequenas */
-  .profile-info .website {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    align-items: center !important;
-  }
-  
-  .profile-info .website .portfolio-link,
-  .profile-info .website .instagram-link,
-  .profile-info .website .whatsapp-link {
-    display: flex !important;
-    width: 100% !important;
-    justify-content: center !important;
-    margin-right: 0 !important;
-  }
 }
 
 /* Estilos para impressão - mostra links reais */
