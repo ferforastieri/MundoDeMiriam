@@ -356,10 +356,8 @@ export default {
             allowTaint: true,
             scrollX: 0,
             scrollY: 0,
-            width: 794, // Largura fixa para A4
-            windowWidth: 794,
-            windowHeight: window.innerHeight,
-            height: curriculumContent.value.scrollHeight
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight
           },
           jsPDF: { 
             unit: 'in', 
@@ -595,19 +593,29 @@ export default {
 .pdf-export .section {
   page-break-inside: avoid;
   margin-bottom: 1.5rem;
+  display: block !important;
+  visibility: visible !important;
 }
 
 .pdf-export .experience-item,
 .pdf-export .education-item {
   page-break-inside: avoid;
   margin-bottom: 1rem;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.pdf-export .experience-content,
+.pdf-export .education-content {
+  display: block !important;
+  visibility: visible !important;
 }
 
 /* Layout consistente para PDF - independente do dispositivo */
 .pdf-export {
-  width: 794px !important;
-  max-width: 794px !important;
-  min-width: 794px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 100% !important;
   height: auto !important;
 }
 
