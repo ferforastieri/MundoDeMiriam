@@ -355,9 +355,21 @@ export default {
             useCORS: true,
             allowTaint: true,
             scrollX: 0,
-            scrollY: 0
+            scrollY: 0,
+            width: 794, // Largura fixa para A4
+            windowWidth: 794,
+            windowHeight: window.innerHeight,
+            height: curriculumContent.value.scrollHeight
           },
-          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+          jsPDF: { 
+            unit: 'in', 
+            format: 'a4', 
+            orientation: 'portrait',
+            compress: true
+          },
+          pagebreak: { 
+            mode: ['avoid-all', 'css', 'legacy']
+          }
         }
 
         // Aplicar estilos específicos para o PDF
@@ -591,12 +603,20 @@ export default {
   margin-bottom: 1rem;
 }
 
-/* Links do header ficam lado a lado no PDF - sobrescreve regras mobile */
+/* Layout consistente para PDF - independente do dispositivo */
+.pdf-export {
+  width: 794px !important;
+  max-width: 794px !important;
+  min-width: 794px !important;
+  height: auto !important;
+}
+
 .pdf-export .profile-info .website {
   display: flex !important;
   flex-direction: row !important;
   gap: 0.5rem !important;
   align-items: center !important;
+  flex-wrap: nowrap !important;
 }
 
 .pdf-export .profile-info .website .portfolio-link,
@@ -607,6 +627,16 @@ export default {
   justify-content: flex-start !important;
   margin-right: 0.5rem !important;
   margin-bottom: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.pdf-export .profile-section {
+  flex-direction: row !important;
+  text-align: left !important;
+}
+
+.pdf-export .profile-image {
+  margin: 0 !important;
 }
 
 .section {
