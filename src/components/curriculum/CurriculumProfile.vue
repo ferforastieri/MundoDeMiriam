@@ -789,6 +789,24 @@ export default {
   .curriculum-content {
     padding: 1.5rem;
   }
+  
+  /* Links empilhados no mobile */
+  .profile-info .website {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+  
+  .profile-info .website .portfolio-link,
+  .profile-info .website .instagram-link,
+  .profile-info .website .whatsapp-link {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.25rem !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -804,6 +822,23 @@ export default {
   .download-button {
     padding: 0.5rem 0.75rem;
     font-size: 0.8rem;
+  }
+  
+  /* Garantir links empilhados em telas pequenas */
+  .profile-info .website {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+  
+  .profile-info .website .portfolio-link,
+  .profile-info .website .instagram-link,
+  .profile-info .website .whatsapp-link {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-right: 0 !important;
   }
 }
 
