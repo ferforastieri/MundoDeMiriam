@@ -165,7 +165,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { TranslatableText } from '../common'
-import PDFDocument from 'pdfkit'
+import html2pdf from 'html2pdf.js'
 
 export default {
   name: 'CurriculumProfile',
@@ -181,7 +181,7 @@ export default {
       router.push('/about')
     }
 
-    const downloadPDF = () => {
+    const downloadPDF = async () => {
       try {
         // Mostrar loading no botão
         const originalText = downloadBtn.value.innerHTML
@@ -193,116 +193,21 @@ export default {
         `
         downloadBtn.value.disabled = true
 
-        // Criar documento PDF
-        const doc = new PDFDocument({ margin: 50 })
-        
-        // Criar blob para download
-        const chunks = []
-        doc.on('data', chunk => chunks.push(chunk))
-        doc.on('end', () => {
-          const blob = new Blob(chunks, { type: 'application/pdf' })
-          const url = URL.createObjectURL(blob)
-          const a = document.createElement('a')
-          a.href = url
-          a.download = 'curriculo-miriam.pdf'
-          document.body.appendChild(a)
-          a.click()
-          document.body.removeChild(a)
-          URL.revokeObjectURL(url)
-          
-          // Restaurar botão
-          downloadBtn.value.innerHTML = originalText
-          downloadBtn.value.disabled = false
-        })
+        // Configurações do PDF
+        const opt = {
+          margin: 1,
+          filename: 'curriculo-miriam.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        }
 
-        // Adicionar link clicável no topo
-        doc.fontSize(12)
-        doc.fillColor('#0066cc')
-        doc.text('🔗 Meu Portfolio - https://mundodemiriam.vercel.app/', 50, 50, {
-          link: 'https://mundodemiriam.vercel.app/',
-          underline: true
-        })
+        // Gerar PDF mantendo os links clicáveis
+        await html2pdf().set(opt).from(curriculumContent.value).save()
 
-        // Nome e título
-        doc.fontSize(24)
-        doc.fillColor('#520')
-        doc.text('Miriam', 50, 100)
-
-        doc.fontSize(14)
-        doc.text('Maquiadora Profissional & Fotógrafa', 50, 130)
-
-        doc.fontSize(12)
-        doc.fillColor('#888')
-        doc.text('Belo Horizonte, Minas Gerais', 50, 150)
-
-        // Sobre
-        doc.fontSize(18)
-        doc.fillColor('#520')
-        doc.text('Sobre', 50, 180)
-
-        doc.fontSize(11)
-        doc.fillColor('black')
-        doc.text('Profissional com experiência em vendas, atendimento ao cliente e operações de loja, incluindo caixa e estoque. Habilidade em comunicação, organização e trabalho em equipe. Também possui experiência como maquiadora e fotógrafa, com conhecimento em marketing para redes sociais.', 50, 210, { width: 500 })
-
-        doc.text('Formação acadêmica inclui Ensino Médio completo e cursos técnicos em Aviação Civil e Fotografia & Marketing para redes sociais. Motivada, proativa e com facilidade para aprender e se adaptar a diferentes ambientes de trabalho.', 50, 260, { width: 500 })
-
-        // Habilidades
-        doc.fontSize(18)
-        doc.fillColor('#520')
-        doc.text('Habilidades', 50, 320)
-
-        doc.fontSize(11)
-        doc.fillColor('black')
-        
-        // Coluna 1 - Atendimento e Vendas
-        doc.text('Atendimento e Vendas', 50, 350, { bold: true })
-        doc.text('• Atendimento ao Cliente', 50, 370)
-        doc.text('• Operação de Caixa', 50, 385)
-        doc.text('• Organização de Loja', 50, 400)
-        doc.text('• Comunicação', 50, 415)
-        doc.text('• Relacionamento com o Cliente', 50, 430)
-
-        // Coluna 2 - Arte e Fotografia
-        doc.text('Arte e Fotografia', 250, 350, { bold: true })
-        doc.text('• Maquiagem', 250, 370)
-        doc.text('• Fotografia Profissional', 250, 385)
-        doc.text('• Marketing para Redes Sociais', 250, 400)
-        doc.text('• Produção de Imagem', 250, 415)
-
-        // Coluna 3 - Operações
-        doc.text('Operações', 450, 350, { bold: true })
-        doc.text('• Controle de Estoque', 450, 370)
-        doc.text('• Operação de Loja', 450, 385)
-        doc.text('• Vendas', 450, 400)
-        doc.text('• Experiência em Shopping', 450, 415)
-
-        // Educação
-        doc.fontSize(18)
-        doc.fillColor('#520')
-        doc.text('Educação', 50, 470)
-
-        doc.fontSize(11)
-        doc.fillColor('black')
-        doc.text('Ensino Médio Completo - Belo Horizonte, Minas Gerais - 01/2015 a 12/2018', 50, 500)
-        doc.text('Curso Fotografia e Marketing para Redes Sociais - Belo Horizonte, Minas Gerais - 01/2018 a 12/2019', 50, 520)
-        doc.text('Curso Aviação Civil - Comissário de Bordo - Belo Horizonte, Minas Gerais - 01/2020 a 12/2021', 50, 540)
-
-        // Experiência
-        doc.fontSize(18)
-        doc.fillColor('#520')
-        doc.text('Experiência', 50, 580)
-
-        // Experiência 1
-        doc.fontSize(11)
-        doc.fillColor('black')
-        doc.text('Caixa e Operadora de Loja - Shopping Partage Estripulia - 01/2024 a 12/2024', 50, 610)
-        doc.fontSize(10)
-        doc.text('• Atuação no setor de varejo, auxiliando clientes no processo de compra e garantindo um atendimento eficiente.', 50, 630, { width: 500 })
-        doc.text('• Responsável pela operação de caixa, controle de estoque e organização da loja.', 50, 645, { width: 500 })
-        doc.text('• Desenvolvimento de habilidades em vendas, atendimento ao público e gestão de produtos.', 50, 660, { width: 500 })
-
-        // Finalizar documento
-        doc.end()
+        // Restaurar botão
+        downloadBtn.value.innerHTML = originalText
+        downloadBtn.value.disabled = false
 
       } catch (error) {
         console.error('Erro ao gerar PDF:', error)
