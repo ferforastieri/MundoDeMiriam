@@ -806,4 +806,40 @@ export default {
     font-size: 0.8rem;
   }
 }
+
+/* Estilos para impressão - mostra links reais */
+@media print {
+  .portfolio-link::after {
+    content: " (https://mundodemiriam.vercel.app/)";
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .instagram-link::after {
+    content: " (https://instagram.com/mihforastieri)";
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .whatsapp-link::after {
+    content: " (https://wa.me/55159920029139)";
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .portfolio-link,
+  .instagram-link,
+  .whatsapp-link {
+    text-decoration: underline !important;
+    color: #000 !important;
+    background: none !important;
+    padding: 0 !important;
+    margin-right: 0.5rem !important;
+  }
+  
+  .back-button,
+  .download-button {
+    display: none !important;
+  }
+}
 </style>
